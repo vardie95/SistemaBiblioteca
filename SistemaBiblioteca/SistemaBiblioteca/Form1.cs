@@ -41,5 +41,12 @@ namespace SistemaBiblioteca
             Libros obje = new Libros();
             obje.Show();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            registrarCliente obje = new registrarCliente();
+            obje.Show();
+        }
     }
 }
