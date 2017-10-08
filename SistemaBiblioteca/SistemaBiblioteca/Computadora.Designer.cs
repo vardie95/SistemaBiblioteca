@@ -1,6 +1,6 @@
 ﻿namespace SistemaBiblioteca
 {
-    partial class Cubículos
+    partial class Computadora
     {
         /// <summary>
         /// Required designer variable.
@@ -33,14 +33,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Cédula = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoraInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Beneficiarios = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cubículo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Finalidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Encargado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -49,14 +41,19 @@
             this.label5 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.Cédula = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoraInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Beneficiarios = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NuComputadora = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Encargado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,11 +62,11 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(410, 9);
+            this.label1.Location = new System.Drawing.Point(398, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(144, 33);
+            this.label1.Size = new System.Drawing.Size(206, 33);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Cubículos";
+            this.label1.Text = "Computadoras";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // textBox1
@@ -111,53 +108,12 @@
             this.Apellido,
             this.HoraInicio,
             this.Beneficiarios,
-            this.Cubículo,
-            this.Finalidad,
+            this.NuComputadora,
             this.Encargado});
-            this.dataGridView1.Location = new System.Drawing.Point(45, 240);
+            this.dataGridView1.Location = new System.Drawing.Point(82, 241);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(846, 396);
+            this.dataGridView1.Size = new System.Drawing.Size(747, 396);
             this.dataGridView1.TabIndex = 4;
-            // 
-            // Cédula
-            // 
-            this.Cédula.HeaderText = "Cédula";
-            this.Cédula.Name = "Cédula";
-            // 
-            // Nombre
-            // 
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            // 
-            // Apellido
-            // 
-            this.Apellido.HeaderText = "Apellido";
-            this.Apellido.Name = "Apellido";
-            // 
-            // HoraInicio
-            // 
-            this.HoraInicio.HeaderText = "Hora Inico";
-            this.HoraInicio.Name = "HoraInicio";
-            // 
-            // Beneficiarios
-            // 
-            this.Beneficiarios.HeaderText = "Beneficiarios";
-            this.Beneficiarios.Name = "Beneficiarios";
-            // 
-            // Cubículo
-            // 
-            this.Cubículo.HeaderText = "Cubículo";
-            this.Cubículo.Name = "Cubículo";
-            // 
-            // Finalidad
-            // 
-            this.Finalidad.HeaderText = "Finalidad";
-            this.Finalidad.Name = "Finalidad";
-            // 
-            // Encargado
-            // 
-            this.Encargado.HeaderText = "Encargado";
-            this.Encargado.Name = "Encargado";
             // 
             // textBox2
             // 
@@ -217,7 +173,7 @@
             // 
             this.comboBox2.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(649, 88);
+            this.comboBox2.Location = new System.Drawing.Point(649, 93);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(180, 21);
             this.comboBox2.TabIndex = 11;
@@ -225,35 +181,17 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(571, 96);
+            this.label6.Location = new System.Drawing.Point(571, 101);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(53, 13);
+            this.label6.Size = new System.Drawing.Size(76, 13);
             this.label6.TabIndex = 12;
-            this.label6.Text = "Cubículo:";
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(649, 130);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(180, 21);
-            this.comboBox3.TabIndex = 13;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(571, 138);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(52, 13);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "Finalidad:";
+            this.label6.Text = "Computadora: ";
             // 
             // comboBox4
             // 
             this.comboBox4.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(649, 176);
+            this.comboBox4.Location = new System.Drawing.Point(649, 142);
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(180, 21);
             this.comboBox4.TabIndex = 15;
@@ -261,7 +199,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(571, 179);
+            this.label8.Location = new System.Drawing.Point(571, 142);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(62, 13);
             this.label8.TabIndex = 16;
@@ -317,7 +255,42 @@
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // Cubículos
+            // Cédula
+            // 
+            this.Cédula.HeaderText = "Cédula";
+            this.Cédula.Name = "Cédula";
+            // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            // 
+            // Apellido
+            // 
+            this.Apellido.HeaderText = "Apellido";
+            this.Apellido.Name = "Apellido";
+            // 
+            // HoraInicio
+            // 
+            this.HoraInicio.HeaderText = "Hora Inico";
+            this.HoraInicio.Name = "HoraInicio";
+            // 
+            // Beneficiarios
+            // 
+            this.Beneficiarios.HeaderText = "Beneficiarios";
+            this.Beneficiarios.Name = "Beneficiarios";
+            // 
+            // NuComputadora
+            // 
+            this.NuComputadora.HeaderText = "# Computadora";
+            this.NuComputadora.Name = "NuComputadora";
+            // 
+            // Encargado
+            // 
+            this.Encargado.HeaderText = "Encargado";
+            this.Encargado.Name = "Encargado";
+            // 
+            // Computadora
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -329,8 +302,6 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.comboBox4);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.label5);
@@ -344,8 +315,8 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
-            this.Location = new System.Drawing.Point(1000, 0);
-            this.Name = "Cubículos";
+            this.Location = new System.Drawing.Point(4000, 0);
+            this.Name = "Computadora";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cubiculos";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -361,14 +332,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cédula;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HoraInicio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Beneficiarios;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cubículo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Finalidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Encargado;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label3;
@@ -377,13 +340,18 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cédula;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HoraInicio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Beneficiarios;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NuComputadora;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Encargado;
     }
 }

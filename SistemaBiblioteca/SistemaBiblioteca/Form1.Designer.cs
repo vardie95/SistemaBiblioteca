@@ -73,6 +73,7 @@
             this.button2.TabIndex = 2;
             this.button2.Text = "Computadoras";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -129,7 +130,7 @@
             this.Controls.Add(this.label1);
             this.Location = new System.Drawing.Point(2000, 1500);
             this.Name = "Form1";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menú Sistema Bibloteca";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);

@@ -33,6 +33,17 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Cédula = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Libro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoraInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaRecibido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Beneficiarios = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoPrestamo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.automatizado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Encargado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Finalidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -51,17 +62,6 @@
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.Cédula = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Libro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoraInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FechaRecibido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Beneficiarios = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipoPrestamo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.automatizado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Encargado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Finalidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -104,7 +104,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 13);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Cedula:";
+            this.label2.Text = "Cédula:";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // dataGridView1
@@ -124,8 +124,63 @@
             this.Finalidad});
             this.dataGridView1.Location = new System.Drawing.Point(45, 289);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(846, 341);
+            this.dataGridView1.Size = new System.Drawing.Size(918, 348);
             this.dataGridView1.TabIndex = 4;
+            // 
+            // Cédula
+            // 
+            this.Cédula.HeaderText = "Cédula";
+            this.Cédula.Name = "Cédula";
+            // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            // 
+            // Apellido
+            // 
+            this.Apellido.HeaderText = "Apellido";
+            this.Apellido.Name = "Apellido";
+            // 
+            // Libro
+            // 
+            this.Libro.HeaderText = "Libro";
+            this.Libro.Name = "Libro";
+            // 
+            // HoraInicio
+            // 
+            this.HoraInicio.HeaderText = "Fecha entrega";
+            this.HoraInicio.Name = "HoraInicio";
+            // 
+            // FechaRecibido
+            // 
+            this.FechaRecibido.HeaderText = "Fecha recibido";
+            this.FechaRecibido.Name = "FechaRecibido";
+            // 
+            // Beneficiarios
+            // 
+            this.Beneficiarios.HeaderText = "Beneficiarios";
+            this.Beneficiarios.Name = "Beneficiarios";
+            // 
+            // tipoPrestamo
+            // 
+            this.tipoPrestamo.HeaderText = "Tipo prestamo";
+            this.tipoPrestamo.Name = "tipoPrestamo";
+            // 
+            // automatizado
+            // 
+            this.automatizado.HeaderText = "automatizado";
+            this.automatizado.Name = "automatizado";
+            // 
+            // Encargado
+            // 
+            this.Encargado.HeaderText = "Encargado";
+            this.Encargado.Name = "Encargado";
+            // 
+            // Finalidad
+            // 
+            this.Finalidad.HeaderText = "Estado";
+            this.Finalidad.Name = "Finalidad";
             // 
             // textBox2
             // 
@@ -304,67 +359,12 @@
             this.comboBox2.Size = new System.Drawing.Size(71, 21);
             this.comboBox2.TabIndex = 30;
             // 
-            // Cédula
-            // 
-            this.Cédula.HeaderText = "Cédula";
-            this.Cédula.Name = "Cédula";
-            // 
-            // Nombre
-            // 
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            // 
-            // Apellido
-            // 
-            this.Apellido.HeaderText = "Apellido";
-            this.Apellido.Name = "Apellido";
-            // 
-            // Libro
-            // 
-            this.Libro.HeaderText = "Libro";
-            this.Libro.Name = "Libro";
-            // 
-            // HoraInicio
-            // 
-            this.HoraInicio.HeaderText = "Fecha entrega";
-            this.HoraInicio.Name = "HoraInicio";
-            // 
-            // FechaRecibido
-            // 
-            this.FechaRecibido.HeaderText = "Fecha recibido";
-            this.FechaRecibido.Name = "FechaRecibido";
-            // 
-            // Beneficiarios
-            // 
-            this.Beneficiarios.HeaderText = "Beneficiarios";
-            this.Beneficiarios.Name = "Beneficiarios";
-            // 
-            // tipoPrestamo
-            // 
-            this.tipoPrestamo.HeaderText = "Tipo prestamo";
-            this.tipoPrestamo.Name = "tipoPrestamo";
-            // 
-            // automatizado
-            // 
-            this.automatizado.HeaderText = "automatizado";
-            this.automatizado.Name = "automatizado";
-            // 
-            // Encargado
-            // 
-            this.Encargado.HeaderText = "Encargado";
-            this.Encargado.Name = "Encargado";
-            // 
-            // Finalidad
-            // 
-            this.Finalidad.HeaderText = "Estado";
-            this.Finalidad.Name = "Finalidad";
-            // 
             // Libros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(914, 649);
+            this.ClientSize = new System.Drawing.Size(970, 646);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.label9);
@@ -390,6 +390,7 @@
             this.Controls.Add(this.label1);
             this.Location = new System.Drawing.Point(700, 500);
             this.Name = "Libros";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Libros";
             this.Load += new System.EventHandler(this.Libros_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

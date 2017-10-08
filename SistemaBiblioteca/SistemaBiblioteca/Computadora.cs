@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace SistemaBiblioteca
 {
-    public partial class Cubículos : Form
+    public partial class Computadora : Form
     {
-        public Cubículos()
+        public Computadora()
         {
             InitializeComponent();
         }

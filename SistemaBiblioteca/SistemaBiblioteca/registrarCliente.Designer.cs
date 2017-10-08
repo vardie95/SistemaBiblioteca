@@ -36,6 +36,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Cédula = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sexo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.edad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -48,11 +53,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.Cédula = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sexo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.edad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -111,7 +111,8 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 13);
             this.label2.TabIndex = 24;
-            this.label2.Text = "Cedula:";
+            this.label2.Text = "Cédula:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // textBox1
             // 
@@ -132,8 +133,34 @@
             this.edad});
             this.dataGridView1.Location = new System.Drawing.Point(29, 187);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(381, 285);
+            this.dataGridView1.Size = new System.Drawing.Size(524, 285);
             this.dataGridView1.TabIndex = 29;
+            // 
+            // Cédula
+            // 
+            this.Cédula.HeaderText = "Cédula";
+            this.Cédula.Name = "Cédula";
+            // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            // 
+            // Apellido
+            // 
+            this.Apellido.HeaderText = "Apellido";
+            this.Apellido.Name = "Apellido";
+            // 
+            // Sexo
+            // 
+            this.Sexo.HeaderText = "Sexo";
+            this.Sexo.Name = "Sexo";
+            this.Sexo.Width = 80;
+            // 
+            // edad
+            // 
+            this.edad.HeaderText = "Edad";
+            this.edad.Name = "edad";
             // 
             // label1
             // 
@@ -257,37 +284,11 @@
             this.label8.TabIndex = 40;
             this.label8.Text = "Año:";
             // 
-            // Cédula
-            // 
-            this.Cédula.HeaderText = "Cédula";
-            this.Cédula.Name = "Cédula";
-            // 
-            // Nombre
-            // 
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            // 
-            // Apellido
-            // 
-            this.Apellido.HeaderText = "Apellido";
-            this.Apellido.Name = "Apellido";
-            // 
-            // Sexo
-            // 
-            this.Sexo.HeaderText = "Sexo";
-            this.Sexo.Name = "Sexo";
-            this.Sexo.Width = 80;
-            // 
-            // edad
-            // 
-            this.edad.HeaderText = "Edad";
-            this.edad.Name = "edad";
-            // 
             // registrarCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(435, 494);
+            this.ClientSize = new System.Drawing.Size(567, 494);
             this.Controls.Add(this.comboBox4);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.comboBox3);
@@ -309,7 +310,8 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button5);
             this.Name = "registrarCliente";
-            this.Text = "registrarCliente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Registrar Cliente";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

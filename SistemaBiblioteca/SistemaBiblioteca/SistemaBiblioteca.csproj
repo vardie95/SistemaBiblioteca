@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Computadora.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Computadora.Designer.cs">
+      <DependentUpon>Computadora.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cubiculos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +78,9 @@
     <Compile Include="registrarCliente.Designer.cs">
       <DependentUpon>registrarCliente.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Computadora.resx">
+      <DependentUpon>Computadora.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Cubiculos.resx">
       <DependentUpon>Cubiculos.cs</DependentUpon>
     </EmbeddedResource>
