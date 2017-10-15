@@ -54,5 +54,11 @@ namespace SistemaBiblioteca
             this.Hide();
             new Computadora().Show();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new Estadisticas().Show();
+        }
     }
 }
