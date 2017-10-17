@@ -107,7 +107,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(105, 23);
             this.button1.TabIndex = 37;
-            this.button1.Text = "Calular selección";
+            this.button1.Text = "Calcular selección";
             this.button1.UseVisualStyleBackColor = false;
             // 
             // button2
@@ -176,7 +176,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button5);
             this.Name = "Estadisticas";
-            this.Text = "Estadisticas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Estadísticas";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
