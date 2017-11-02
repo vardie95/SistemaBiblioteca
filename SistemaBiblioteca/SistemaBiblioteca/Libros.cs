@@ -33,7 +33,18 @@ namespace SistemaBiblioteca
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (textBox1.Text == "" || textBox4.Text == "" || textBox6.Text == "" || comboBox1.SelectedIndex.Equals(-1)|| comboBox2.SelectedIndex.Equals(-1) || comboBox4.SelectedIndex.Equals(-1))
+            {
+                MessageBox.Show("Alguno de los campos esta Incompleto", "Prestamo Libros", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
 
+
+            }
+            else {
+
+                button2.Enabled = false;
+
+            }
+            
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -68,6 +79,22 @@ namespace SistemaBiblioteca
         }
 
         private void Libros_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text.Length >= 8)
+            {
+                button2.Enabled = true;
+            }
+            else
+                MessageBox.Show("Digite una Identificación Válida", "Prestamo Libro", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
