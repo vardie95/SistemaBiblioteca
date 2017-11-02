@@ -50,5 +50,10 @@ namespace SistemaBiblioteca
             this.Close();
             new Form1().Show();
         }
+
+        private void fechaEstadistica_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

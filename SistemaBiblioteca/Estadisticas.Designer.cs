@@ -136,6 +136,7 @@
             this.fechaEstadistica.Name = "fechaEstadistica";
             this.fechaEstadistica.Size = new System.Drawing.Size(200, 20);
             this.fechaEstadistica.TabIndex = 41;
+            this.fechaEstadistica.ValueChanged += new System.EventHandler(this.fechaEstadistica_ValueChanged);
             // 
             // button3
             // 
