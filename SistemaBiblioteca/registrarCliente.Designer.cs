@@ -62,7 +62,7 @@
             this.btnVolver.Location = new System.Drawing.Point(480, 20);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(75, 23);
-            this.btnVolver.TabIndex = 21;
+            this.btnVolver.TabIndex = 9;
             this.btnVolver.Text = "Volver";
             this.btnVolver.UseVisualStyleBackColor = false;
             this.btnVolver.Click += new System.EventHandler(this.clicVolver);
@@ -73,7 +73,7 @@
             this.label4.Location = new System.Drawing.Point(26, 77);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(50, 13);
-            this.label4.TabIndex = 28;
+            this.label4.TabIndex = 12;
             this.label4.Text = "Apellido: ";
             // 
             // label3
@@ -82,7 +82,7 @@
             this.label3.Location = new System.Drawing.Point(26, 51);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 13);
-            this.label3.TabIndex = 27;
+            this.label3.TabIndex = 11;
             this.label3.Text = "Nombre: ";
             // 
             // label2
@@ -91,7 +91,7 @@
             this.label2.Location = new System.Drawing.Point(33, 26);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 13);
-            this.label2.TabIndex = 24;
+            this.label2.TabIndex = 10;
             this.label2.Text = "Cédula:";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
@@ -101,7 +101,7 @@
             this.txtCedula.Location = new System.Drawing.Point(82, 23);
             this.txtCedula.Name = "txtCedula";
             this.txtCedula.Size = new System.Drawing.Size(138, 20);
-            this.txtCedula.TabIndex = 22;
+            this.txtCedula.TabIndex = 0;
             this.txtCedula.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumbers);
             // 
             // dataGridView1
@@ -116,7 +116,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(29, 187);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(524, 285);
-            this.dataGridView1.TabIndex = 29;
+            this.dataGridView1.TabIndex = 7;
             // 
             // Cédula
             // 
@@ -150,7 +150,7 @@
             this.label1.Location = new System.Drawing.Point(26, 102);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(37, 13);
-            this.label1.TabIndex = 30;
+            this.label1.TabIndex = 13;
             this.label1.Text = "Sexo: ";
             // 
             // cbSexo
@@ -163,7 +163,7 @@
             this.cbSexo.Location = new System.Drawing.Point(82, 102);
             this.cbSexo.Name = "cbSexo";
             this.cbSexo.Size = new System.Drawing.Size(138, 21);
-            this.cbSexo.TabIndex = 31;
+            this.cbSexo.TabIndex = 3;
             // 
             // button1
             // 
@@ -172,7 +172,7 @@
             this.button1.Location = new System.Drawing.Point(236, 20);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 32;
+            this.button1.TabIndex = 5;
             this.button1.Text = "Buscar";
             this.button1.UseVisualStyleBackColor = false;
             // 
@@ -181,10 +181,10 @@
             this.button4.BackColor = System.Drawing.Color.Firebrick;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button4.Location = new System.Drawing.Point(236, 84);
+            this.button4.Location = new System.Drawing.Point(478, 150);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 31);
-            this.button4.TabIndex = 34;
+            this.button4.TabIndex = 8;
             this.button4.Text = "Eliminar";
             this.button4.UseVisualStyleBackColor = false;
             // 
@@ -193,10 +193,10 @@
             this.button2.BackColor = System.Drawing.Color.YellowGreen;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(236, 48);
+            this.button2.Location = new System.Drawing.Point(236, 49);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 30);
-            this.button2.TabIndex = 33;
+            this.button2.TabIndex = 6;
             this.button2.Text = "Agregar";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.AgergarCliente);
@@ -207,7 +207,7 @@
             this.label5.Location = new System.Drawing.Point(26, 136);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(109, 13);
-            this.label5.TabIndex = 35;
+            this.label5.TabIndex = 14;
             this.label5.Text = "Fecha de nacimiento:";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
@@ -216,7 +216,7 @@
             this.dtFechaNacimiento.Location = new System.Drawing.Point(36, 161);
             this.dtFechaNacimiento.Name = "dtFechaNacimiento";
             this.dtFechaNacimiento.Size = new System.Drawing.Size(200, 20);
-            this.dtFechaNacimiento.TabIndex = 41;
+            this.dtFechaNacimiento.TabIndex = 4;
             // 
             // txtNombre
             // 
@@ -224,14 +224,14 @@
             this.txtNombre.Location = new System.Drawing.Point(82, 49);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(138, 20);
-            this.txtNombre.TabIndex = 42;
+            this.txtNombre.TabIndex = 1;
             // 
             // txtApellido
             // 
             this.txtApellido.Location = new System.Drawing.Point(82, 76);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(138, 20);
-            this.txtApellido.TabIndex = 43;
+            this.txtApellido.TabIndex = 2;
             // 
             // registrarCliente
             // 

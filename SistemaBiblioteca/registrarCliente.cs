@@ -82,6 +82,10 @@ namespace SistemaBiblioteca
             {
                 error += "*El campo apellido no puede tener mas de 40 caracteres.\n";
             }
+            if (cbSexo.SelectedIndex < 0)
+            {
+                error += "*Debe elegir una opción del campo sexo.\n";
+            }
 
             return error;
 
@@ -93,10 +97,15 @@ namespace SistemaBiblioteca
             {
                 con.Abrir();
                 string error = verificarCampos();
+                string sexo = this.cbSexo.GetItemText(this.cbSexo.SelectedItem);
                 if (error == "")
                 {
-
+                    con.CargarQuery("INSERT INTO `cliente` (`cedula`, `Nombre`, `Apellido`, `Sexo`, `fechaNacimiento`)" +
+                        " VALUES ('"+txtCedula.Text+"', '"+txtNombre.Text+"', '"+txtApellido.Text+"', '"+sexo+
+                        "', '"+dtFechaNacimiento.Text+"');");
+                    con.GetSalida().Close();
                     MessageBox.Show("Cliente registrado");
+                    clearRegistro();
                 }
                 else
                 {
@@ -113,6 +122,15 @@ namespace SistemaBiblioteca
             {
                 con.Cerrar();
             }
+        }
+
+        private void clearRegistro() {
+            txtCedula.Text = string.Empty;
+            txtNombre.Text = string.Empty;
+            txtApellido.Text = string.Empty;
+            cbSexo.SelectedIndex = -1;
+            dtFechaNacimiento.Value = DateTime.Today;
+            txtCedula.Focus();
         }
 
         private void onlyNumbers(object sender, KeyPressEventArgs e)
