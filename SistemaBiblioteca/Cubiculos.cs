@@ -12,9 +12,19 @@ namespace SistemaBiblioteca
 {
     public partial class Cubículos : Form
     {
+        
         public Cubículos()
         {
             InitializeComponent();
+            InicializarTime();
+
+        }
+
+        //Convierte el datetime en solo hora.
+        public void InicializarTime()
+        {
+            dtCubiculo.Format = DateTimePickerFormat.Time;
+            dtCubiculo.ShowUpDown = true;
         }
 
         private void label1_Click(object sender, EventArgs e)
