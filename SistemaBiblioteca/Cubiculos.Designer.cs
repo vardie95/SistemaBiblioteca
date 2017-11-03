@@ -56,7 +56,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.dtCubiculo = new System.Windows.Forms.DateTimePicker();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -300,13 +299,6 @@
             this.textBox5.Size = new System.Drawing.Size(138, 20);
             this.textBox5.TabIndex = 51;
             // 
-            // dtCubiculo
-            // 
-            this.dtCubiculo.Location = new System.Drawing.Point(576, 231);
-            this.dtCubiculo.Name = "dtCubiculo";
-            this.dtCubiculo.Size = new System.Drawing.Size(200, 20);
-            this.dtCubiculo.TabIndex = 53;
-            // 
             // monthCalendar1
             // 
             this.monthCalendar1.Location = new System.Drawing.Point(576, 57);
@@ -320,7 +312,6 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(914, 649);
             this.Controls.Add(this.monthCalendar1);
-            this.Controls.Add(this.dtCubiculo);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.label9);
@@ -381,7 +372,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.DateTimePicker dtCubiculo;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
     }
 }

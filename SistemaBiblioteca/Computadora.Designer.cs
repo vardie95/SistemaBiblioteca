@@ -200,6 +200,10 @@
             // 
             this.comboBox4.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Items.AddRange(new object[] {
+            "Damaris Ramírez",
+            "Marta Valverde",
+            "Oscar Rodríguez"});
             this.comboBox4.Location = new System.Drawing.Point(139, 169);
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(180, 21);
