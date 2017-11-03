@@ -52,14 +52,12 @@
             this.textNombre = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-<<<<<<< HEAD
+
             this.TextCedula = new System.Windows.Forms.TextBox();
             this.textFinalidad = new System.Windows.Forms.TextBox();
             this.dtCubiculo = new System.Windows.Forms.DateTimePicker();
-=======
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
->>>>>>> origin/master
+
+
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.CB_beneficiarios = new System.Windows.Forms.ComboBox();
             this.CB_cubiculo = new System.Windows.Forms.ComboBox();
@@ -345,13 +343,11 @@
             this.Controls.Add(this.CB_cubiculo);
             this.Controls.Add(this.CB_beneficiarios);
             this.Controls.Add(this.monthCalendar1);
-<<<<<<< HEAD
+
             this.Controls.Add(this.dtCubiculo);
             this.Controls.Add(this.textFinalidad);
-=======
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox6);
->>>>>>> origin/master
+
+
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.button4);
@@ -405,14 +401,14 @@
         private System.Windows.Forms.TextBox textNombre;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
-<<<<<<< HEAD
+
         private System.Windows.Forms.TextBox TextCedula;
         private System.Windows.Forms.TextBox textFinalidad;
         private System.Windows.Forms.DateTimePicker dtCubiculo;
-=======
+
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox5;
->>>>>>> origin/master
+
         private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.ComboBox CB_beneficiarios;
         private System.Windows.Forms.ComboBox CB_cubiculo;
