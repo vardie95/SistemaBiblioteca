@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -117,9 +118,11 @@ namespace SistemaBiblioteca
                 }
 
             }
-            catch (Exception ex)
+            catch (MySqlException ex)
             {
-                MessageBox.Show("Error: " + ex, "Error");
+                int errorNum = ex.Number;
+                if(errorNum == 1062) MessageBox.Show("Ya existe un usuario con la misma cédula", "Error");
+                else MessageBox.Show("Error: " + ex.Number, "Error");
 
             }
             finally
@@ -217,8 +220,8 @@ namespace SistemaBiblioteca
 
             int rowIndex = dgClientes.CurrentCell.RowIndex;
             txtCedula.Text = dgClientes.Rows[rowIndex].Cells["Cédula"].Value.ToString();
-            txtCedula.Text = dgClientes.Rows[rowIndex].Cells["Nombre"].Value.ToString();
-            txtCedula.Text = dgClientes.Rows[rowIndex].Cells["Apellido"].Value.ToString();
+            txtNombre.Text = dgClientes.Rows[rowIndex].Cells["Nombre"].Value.ToString();
+            txtApellido.Text = dgClientes.Rows[rowIndex].Cells["Apellido"].Value.ToString();
 
             string sexo = dgClientes.Rows[rowIndex].Cells["Sexo"].Value.ToString();
             if (sexo == "Masculino") cbSexo.SelectedIndex = 0;
@@ -227,6 +230,80 @@ namespace SistemaBiblioteca
             string date = dgClientes.Rows[rowIndex].Cells["Fecha Nacimiento"].Value.ToString();
             DateTime birthdate = DateTime.ParseExact(date, "d/MM/yyyy", CultureInfo.InvariantCulture);
             dtFechaNacimiento.Value = birthdate;
+        }
+
+        private void ActualizarCliente(object sender, EventArgs e)
+        {
+            try
+            {
+                con.Abrir();
+                string error = verificarCampos();
+                string sexo = this.cbSexo.GetItemText(this.cbSexo.SelectedItem);
+                if (error == "")
+                {
+
+                    con.CargarQuery("UPDATE `cliente` SET `Nombre`= '"+txtNombre.Text.Trim()+"',`Apellido`= '"+
+                        txtApellido.Text.Trim()+"',`Sexo`='"+sexo+"',`fechaNacimiento`='"+dtFechaNacimiento.Text+
+                        "' WHERE `cedula` = '"+txtCedula.Text.Trim()+"';");
+                    con.GetSalida().Close();
+                    MessageBox.Show("Cliente actualizado");
+                    clearRegistro();
+                    CargarClientes();
+                }
+                else
+                {
+                    MessageBox.Show(error, "Error");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex, "Error");
+
+            }
+            finally
+            {
+                con.Cerrar();
+            }
+        }
+
+        private void EliminarCliente(object sender, EventArgs e)
+        {
+            try
+            {
+                con.Abrir();
+
+                int rowIndex = dgClientes.CurrentCell.RowIndex;
+                string cedula = dgClientes.Rows[rowIndex].Cells["Cédula"].Value.ToString();
+                string nombre = dgClientes.Rows[rowIndex].Cells["Nombre"].Value.ToString();
+                nombre += " "+dgClientes.Rows[rowIndex].Cells["Apellido"].Value.ToString();
+                DialogResult dialogResult = MessageBox.Show("¿Está seguro de borrar al cliente?\nCedula: "+cedula+".\n" +
+                    "Nombre: "+nombre+"", "Borrar cliente", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    con.CargarQuery("DELETE FROM `cliente` WHERE cedula = '"+cedula+"';");
+                    con.GetSalida().Close();
+                    MessageBox.Show("Cliente borrado");
+                    clearRegistro();
+                    CargarClientes();
+                }
+                
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex, "Error");
+
+            }
+            finally
+            {
+                con.Cerrar();
+            }
+        }
+
+        private void BtnLimparClic(object sender, EventArgs e)
+        {
+            clearRegistro();
         }
     }
 }

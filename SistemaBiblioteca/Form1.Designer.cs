@@ -100,7 +100,7 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(126, 31);
             this.button4.TabIndex = 4;
-            this.button4.Text = "Registrar clientes";
+            this.button4.Text = "Clientes";
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 

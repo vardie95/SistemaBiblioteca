@@ -53,6 +53,7 @@
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
+            this.btnLimpiar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgClientes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -158,6 +159,7 @@
             // cbSexo
             // 
             this.cbSexo.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.cbSexo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSexo.FormattingEnabled = true;
             this.cbSexo.Items.AddRange(new object[] {
             "Masculino",
@@ -184,12 +186,13 @@
             this.button4.BackColor = System.Drawing.Color.Firebrick;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button4.Location = new System.Drawing.Point(236, 102);
+            this.button4.Location = new System.Drawing.Point(478, 155);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 26);
             this.button4.TabIndex = 8;
             this.button4.Text = "Eliminar";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.EliminarCliente);
             // 
             // button2
             // 
@@ -238,7 +241,7 @@
             // 
             // button3
             // 
-            this.button3.BackColor = System.Drawing.Color.RoyalBlue;
+            this.button3.BackColor = System.Drawing.Color.CornflowerBlue;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button3.Location = new System.Drawing.Point(236, 72);
@@ -247,6 +250,20 @@
             this.button3.TabIndex = 15;
             this.button3.Text = "Actualizar";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.ActualizarCliente);
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.BackColor = System.Drawing.Color.IndianRed;
+            this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnLimpiar.Location = new System.Drawing.Point(236, 102);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(75, 26);
+            this.btnLimpiar.TabIndex = 16;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = false;
+            this.btnLimpiar.Click += new System.EventHandler(this.BtnLimparClic);
             // 
             // registrarCliente
             // 
@@ -254,6 +271,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(567, 494);
+            this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.txtApellido);
             this.Controls.Add(this.txtNombre);
@@ -301,5 +319,6 @@
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnLimpiar;
     }
 }
