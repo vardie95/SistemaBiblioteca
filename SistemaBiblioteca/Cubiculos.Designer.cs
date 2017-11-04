@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgCubiculos = new System.Windows.Forms.DataGridView();
             this.Cédula = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,7 +61,7 @@
             this.lblHoy = new System.Windows.Forms.Label();
             this.dtHora = new System.Windows.Forms.DateTimePicker();
             this.rbFechaActual = new System.Windows.Forms.RadioButton();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgCubiculos)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -76,10 +76,10 @@
             this.label1.Text = "Cubículos";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // dataGridView1
+            // dgCubiculos
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgCubiculos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgCubiculos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Cédula,
             this.Nombre,
             this.Apellido,
@@ -88,11 +88,11 @@
             this.Cubículo,
             this.Finalidad,
             this.Encargado});
-            this.dataGridView1.Location = new System.Drawing.Point(45, 299);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(846, 337);
-            this.dataGridView1.TabIndex = 4;
+            this.dgCubiculos.Location = new System.Drawing.Point(45, 299);
+            this.dgCubiculos.Name = "dgCubiculos";
+            this.dgCubiculos.ReadOnly = true;
+            this.dgCubiculos.Size = new System.Drawing.Size(846, 337);
+            this.dgCubiculos.TabIndex = 4;
             // 
             // Cédula
             // 
@@ -415,13 +415,13 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.TextCedula);
             this.Controls.Add(this.button5);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgCubiculos);
             this.Controls.Add(this.label1);
             this.Location = new System.Drawing.Point(1000, 0);
             this.Name = "Cubículos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cubiculos";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgCubiculos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -430,7 +430,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgCubiculos;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cédula;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;

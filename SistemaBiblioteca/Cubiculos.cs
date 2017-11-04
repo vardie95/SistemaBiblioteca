@@ -31,7 +31,7 @@ namespace SistemaBiblioteca
         private void inicializarFechaActual()
         {
 
-            lblHoy.Text = fechaHoy.ToString("D",CultureInfo.CreateSpecificCulture("es-MX"));
+            lblHoy.Text = fechaHoy.ToString("D", CultureInfo.CreateSpecificCulture("es-MX"));
         }
 
 
@@ -65,22 +65,26 @@ namespace SistemaBiblioteca
         private void button1_Click(object sender, EventArgs e)
         {
             string error = "";
-            if (TextCedula.Text.Trim() == "" || TextCedula.Text.Trim().Length >10 )
+            if (TextCedula.Text.Trim() == "" || TextCedula.Text.Trim().Length > 10)
             {
                 MessageBox.Show("El campo cédula no puede estar vacio o ser mayor a 10 digitos\n", "Registro Cubículo", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
             }
-            else {
+            else
+            {
                 BuscarCliente();
-                if(textNombre.Text != ""){
+                if (textNombre.Text != "")
+                {
                     button2.Enabled = true;
                     button4.Enabled = true;
-                }                
+                }
 
             }
         }
-        private String validarCampos() {
+        private String validarCampos()
+        {
             string error = "";
-            if(TextCedula.Text.Trim() == "") {
+            if (TextCedula.Text.Trim() == "")
+            {
                 error += "*El campo cédula no puede estar vacio.\n";
             }
             if (TextCedula.Text.Trim().Length > 10)
@@ -155,7 +159,7 @@ namespace SistemaBiblioteca
         {
             try
             {
-                
+
                 con.Abrir();
                 con.CargarQuery("select * from cliente where cedula ='" + TextCedula.Text.Trim() + "%';");
                 int count = 0;
@@ -167,7 +171,8 @@ namespace SistemaBiblioteca
                     textNombre.Text = reader["nombre"].ToString();
                     textApellido.Text = reader["apellido"].ToString();
                 }
-                if (count == 0) {
+                if (count == 0)
+                {
                     MessageBox.Show("La busqueda no obtuvo resultados.Digite una Cédula Válida");
                     textNombre.Text = "";
                     textApellido.Text = "";
@@ -178,7 +183,7 @@ namespace SistemaBiblioteca
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex, "Error");
-                textNombre.Text= "";
+                textNombre.Text = "";
                 textApellido.Text = "";
 
             }
@@ -204,14 +209,14 @@ namespace SistemaBiblioteca
                 }
                 else
                 {
-                    MessageBox.Show(error,"Error");
+                    MessageBox.Show(error, "Error");
                 }
 
             }
             catch (MySqlException ex)
             {
                 int errorNum = ex.Number;
-                if(errorNum == 1452) MessageBox.Show("Error: Revisar la cédula Ingresada.", "Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                if (errorNum == 1452) MessageBox.Show("Error: Revisar la cédula Ingresada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else MessageBox.Show("Error: " + ex.Number, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
@@ -220,7 +225,8 @@ namespace SistemaBiblioteca
                 con.Cerrar();
             }
         }
-        private void limpiarCampos() {
+        private void limpiarCampos()
+        {
             TextCedula.Text = "";
             textNombre.Text = "";
             textApellido.Text = "";
@@ -232,7 +238,22 @@ namespace SistemaBiblioteca
 
 
         }
+        private DataTable InicializarTabla()
+        {
+            DataTable tablaSalida = new DataTable();
+            tablaSalida.Columns.Add(new DataColumn("Cédula"));
+            tablaSalida.Columns.Add(new DataColumn("Nombre"));
+            tablaSalida.Columns.Add(new DataColumn("Apellido"));
+            tablaSalida.Columns.Add(new DataColumn("Hora Inicio"));
+            tablaSalida.Columns.Add(new DataColumn("Beneficiarios"));
+            tablaSalida.Columns.Add(new DataColumn("Cubículo"));
+            tablaSalida.Columns.Add(new DataColumn("Finalidad"));
+            tablaSalida.Columns.Add(new DataColumn("Encargado"));
+            return tablaSalida;
+        }
+      
 
-    }
+    }  
+
 
 }
