@@ -8,16 +8,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace SistemaBiblioteca
 {
     public partial class Cubículos : Form
     {
         DateTime fechaHoy = DateTime.Today;
+        Conexion con;
         public Cubículos()
         {
             InitializeComponent();
             inicializarFechaActual();
+            rbFechaActual.Checked = true;
+            dtHora.Format = DateTimePickerFormat.Time;
+            dtHora.ShowUpDown = true;
+            con = new Conexion(@"Data Source = localhost;port=3306;Initial"
+            + " Catalog=sistemabiblioteca;User Id=root;password = '' ");
 
         }
 
@@ -63,9 +70,11 @@ namespace SistemaBiblioteca
                 MessageBox.Show("El campo cédula no puede estar vacio o ser mayor a 10 digitos\n", "Registro Cubículo", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
             }
             else {
-                MessageBox.Show("Valido");
-                button2.Enabled = true;
-                button4.Enabled = true; 
+                BuscarCliente();
+                if(textNombre.Text != ""){
+                    button2.Enabled = true;
+                    button4.Enabled = true;
+                }                
 
             }
         }
@@ -109,7 +118,7 @@ namespace SistemaBiblioteca
             if (error.Equals(""))
             {
 
-                MessageBox.Show("Validado");
+               // AgregarCliente();
                 button2.Enabled = false;
                 button4.Enabled = false;
             }
@@ -119,10 +128,94 @@ namespace SistemaBiblioteca
 
             }
         }
+        private void rbFechaActual_CheckedChanged(object sender, EventArgs e)
+        {
+            dtFecha.Enabled = false;
+            dtFecha.SetDate(DateTime.Today);
+            dtHora.Enabled = false;
+            dtHora.Text = DateTime.Now.ToString("HH:mm:ss tt");
+        }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            monthCalendar1.Enabled = true;
+            dtFecha.Enabled = true;
+            dtHora.Enabled = true;
         }
+
+        private void rbFechaActual_CheckedChanged_1(object sender, EventArgs e)
+        {
+            dtFecha.Enabled = false;
+            dtHora.Enabled = false;
+            dtFecha.SetDate(fechaHoy);
+        }
+        private void BuscarCliente()
+        {
+            try
+            {
+                
+                con.Abrir();
+                con.CargarQuery("select * from cliente where cedula ='" + TextCedula.Text.Trim() + "%';");
+                int count = 0;
+
+                IDataReader reader = con.GetSalida();
+                while (reader.Read())
+                {
+                    count += 1;
+                    textNombre.Text = reader["nombre"].ToString();
+                    textApellido.Text = reader["apellido"].ToString();
+                }
+                if (count == 0) {
+                    MessageBox.Show("La busqueda no obtuvo resultados.Digite una Cédula Válida");
+                    textNombre.Text = "";
+                    textApellido.Text = "";
+                    button2.Enabled = false;
+                    button4.Enabled = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex, "Error");
+                textNombre.Text= "";
+                textApellido.Text = "";
+
+            }
+            finally
+            {
+                con.Cerrar();
+            }
+        }
+        /*private void AgregarCliente()
+        {
+            try
+            {
+                con.Abrir();
+                string error = validarCampos();
+                if (error == "")
+                {
+                    con.CargarQuery("INSERT INTO `cubiculo`(`cubiculo`, `fecha`, `horaInicio`, `finalidad`, `beneficiarios`, `encargado`, `cedula`) " +
+                        "VALUES ('" + CB_cubiculo.Text.Trim() + "', '" + fechaHoy + ");");
+                    con.GetSalida().Close();
+                    MessageBox.Show("Cliente registrado");
+                }
+                else
+                {
+                    MessageBox.Show(error,"Error");
+                }
+
+            }
+            catch (MySqlException ex)
+            {
+                int errorNum = ex.Number;
+                if(errorNum == 1062) MessageBox.Show("Ya existe un usuario con la misma cédula", "Error");
+                else MessageBox.Show("Error: " + ex.Number, "Error");
+
+            }
+            finally
+            {
+                con.Cerrar();
+            }
+        }*/
+
     }
+
 }

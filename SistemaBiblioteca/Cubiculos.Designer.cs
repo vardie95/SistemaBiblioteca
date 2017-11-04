@@ -54,12 +54,13 @@
             this.button1 = new System.Windows.Forms.Button();
             this.TextCedula = new System.Windows.Forms.TextBox();
             this.textFinalidad = new System.Windows.Forms.TextBox();
-            this.dtCubiculo = new System.Windows.Forms.DateTimePicker();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.dtFecha = new System.Windows.Forms.MonthCalendar();
             this.CB_beneficiarios = new System.Windows.Forms.ComboBox();
             this.CB_cubiculo = new System.Windows.Forms.ComboBox();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.lblHoy = new System.Windows.Forms.Label();
+            this.dtHora = new System.Windows.Forms.DateTimePicker();
+            this.rbFechaActual = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -301,20 +302,12 @@
             this.textFinalidad.Size = new System.Drawing.Size(138, 20);
             this.textFinalidad.TabIndex = 51;
             // 
-            // dtCubiculo
+            // dtFecha
             // 
-            this.dtCubiculo.Enabled = false;
-            this.dtCubiculo.Location = new System.Drawing.Point(0, 0);
-            this.dtCubiculo.Name = "dtCubiculo";
-            this.dtCubiculo.Size = new System.Drawing.Size(200, 20);
-            this.dtCubiculo.TabIndex = 57;
-            // 
-            // monthCalendar1
-            // 
-            this.monthCalendar1.Enabled = false;
-            this.monthCalendar1.Location = new System.Drawing.Point(576, 57);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 54;
+            this.dtFecha.Enabled = false;
+            this.dtFecha.Location = new System.Drawing.Point(576, 57);
+            this.dtFecha.Name = "dtFecha";
+            this.dtFecha.TabIndex = 54;
             // 
             // CB_beneficiarios
             // 
@@ -356,7 +349,7 @@
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(669, 230);
+            this.radioButton1.Location = new System.Drawing.Point(712, 256);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(124, 17);
             this.radioButton1.TabIndex = 58;
@@ -368,11 +361,30 @@
             // lblHoy
             // 
             this.lblHoy.AutoSize = true;
-            this.lblHoy.Location = new System.Drawing.Point(12, 23);
+            this.lblHoy.Location = new System.Drawing.Point(2, 9);
             this.lblHoy.Name = "lblHoy";
             this.lblHoy.Size = new System.Drawing.Size(37, 13);
             this.lblHoy.TabIndex = 59;
             this.lblHoy.Text = "Fecha";
+            // 
+            // dtHora
+            // 
+            this.dtHora.Location = new System.Drawing.Point(637, 230);
+            this.dtHora.Name = "dtHora";
+            this.dtHora.Size = new System.Drawing.Size(151, 20);
+            this.dtHora.TabIndex = 65;
+            // 
+            // rbFechaActual
+            // 
+            this.rbFechaActual.AutoSize = true;
+            this.rbFechaActual.Location = new System.Drawing.Point(576, 258);
+            this.rbFechaActual.Name = "rbFechaActual";
+            this.rbFechaActual.Size = new System.Drawing.Size(87, 17);
+            this.rbFechaActual.TabIndex = 66;
+            this.rbFechaActual.TabStop = true;
+            this.rbFechaActual.Text = "Fecha actual";
+            this.rbFechaActual.UseVisualStyleBackColor = true;
+            this.rbFechaActual.CheckedChanged += new System.EventHandler(this.rbFechaActual_CheckedChanged_1);
             // 
             // Cubículos
             // 
@@ -380,12 +392,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(914, 649);
+            this.Controls.Add(this.rbFechaActual);
+            this.Controls.Add(this.dtHora);
             this.Controls.Add(this.lblHoy);
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.CB_cubiculo);
             this.Controls.Add(this.CB_beneficiarios);
-            this.Controls.Add(this.monthCalendar1);
-            this.Controls.Add(this.dtCubiculo);
+            this.Controls.Add(this.dtFecha);
             this.Controls.Add(this.textFinalidad);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label5);
@@ -443,15 +456,16 @@
 
         private System.Windows.Forms.TextBox TextCedula;
         private System.Windows.Forms.TextBox textFinalidad;
-        private System.Windows.Forms.DateTimePicker dtCubiculo;
 
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox5;
 
-        private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.MonthCalendar dtFecha;
         private System.Windows.Forms.ComboBox CB_beneficiarios;
         private System.Windows.Forms.ComboBox CB_cubiculo;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Label lblHoy;
+        private System.Windows.Forms.DateTimePicker dtHora;
+        private System.Windows.Forms.RadioButton rbFechaActual;
     }
 }
