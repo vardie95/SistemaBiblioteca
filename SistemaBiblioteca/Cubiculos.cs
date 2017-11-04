@@ -118,9 +118,12 @@ namespace SistemaBiblioteca
             if (error.Equals(""))
             {
 
-               // AgregarCliente();
-                button2.Enabled = false;
-                button4.Enabled = false;
+                AgregarCliente();
+                if (textNombre.Text == "")
+                {
+                    button2.Enabled = false;
+                    button4.Enabled = false;
+                }
             }
             else
             {
@@ -184,7 +187,7 @@ namespace SistemaBiblioteca
                 con.Cerrar();
             }
         }
-        /*private void AgregarCliente()
+        private void AgregarCliente()
         {
             try
             {
@@ -193,9 +196,11 @@ namespace SistemaBiblioteca
                 if (error == "")
                 {
                     con.CargarQuery("INSERT INTO `cubiculo`(`cubiculo`, `fecha`, `horaInicio`, `finalidad`, `beneficiarios`, `encargado`, `cedula`) " +
-                        "VALUES ('" + CB_cubiculo.Text.Trim() + "', '" + fechaHoy + ");");
+                        " VALUES ('" + CB_cubiculo.SelectedItem.ToString() + "', '" + fechaHoy.ToString() + "', '" + dtHora.Text + "', '" + textFinalidad.Text.Trim() +
+                        "', '" + CB_beneficiarios.SelectedItem.ToString() + "', '" + CB_encargado.SelectedItem.ToString() + "', '" + TextCedula.Text.Trim() + "');");
                     con.GetSalida().Close();
-                    MessageBox.Show("Cliente registrado");
+                    MessageBox.Show("Prestamo Cubículo registrado");
+                    limpiarCampos();
                 }
                 else
                 {
@@ -206,15 +211,27 @@ namespace SistemaBiblioteca
             catch (MySqlException ex)
             {
                 int errorNum = ex.Number;
-                if(errorNum == 1062) MessageBox.Show("Ya existe un usuario con la misma cédula", "Error");
-                else MessageBox.Show("Error: " + ex.Number, "Error");
+                if(errorNum == 1452) MessageBox.Show("Error: Revisar la cédula Ingresada.", "Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                else MessageBox.Show("Error: " + ex.Number, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
             finally
             {
                 con.Cerrar();
             }
-        }*/
+        }
+        private void limpiarCampos() {
+            TextCedula.Text = "";
+            textNombre.Text = "";
+            textApellido.Text = "";
+            textFinalidad.Text = "";
+            CB_beneficiarios.SelectedIndex = -1;
+            CB_cubiculo.SelectedIndex = -1;
+            CB_encargado.SelectedIndex = -1;
+
+
+
+        }
 
     }
 
