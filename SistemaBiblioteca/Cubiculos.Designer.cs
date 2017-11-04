@@ -342,9 +342,12 @@
             // 
             this.CB_cubiculo.FormattingEnabled = true;
             this.CB_cubiculo.Items.AddRange(new object[] {
-            "A1",
-            "B2",
-            "B3"});
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6"});
             this.CB_cubiculo.Location = new System.Drawing.Point(121, 141);
             this.CB_cubiculo.Name = "CB_cubiculo";
             this.CB_cubiculo.Size = new System.Drawing.Size(121, 21);
