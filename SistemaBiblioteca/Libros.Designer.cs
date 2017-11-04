@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TextCedula = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -44,8 +44,8 @@
             this.automatizado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Encargado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Finalidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textNombre = new System.Windows.Forms.TextBox();
+            this.textApellido = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -53,15 +53,15 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textLibro = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.CB_tipo = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.CB_automizado = new System.Windows.Forms.ComboBox();
+            this.CB_encargado = new System.Windows.Forms.ComboBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.CB_beneficiarios = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,13 +77,13 @@
             this.label1.Text = "Libros";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // textBox1
+            // TextCedula
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBox1.Location = new System.Drawing.Point(107, 59);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(138, 20);
-            this.textBox1.TabIndex = 1;
+            this.TextCedula.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.TextCedula.Location = new System.Drawing.Point(107, 59);
+            this.TextCedula.Name = "TextCedula";
+            this.TextCedula.Size = new System.Drawing.Size(138, 20);
+            this.TextCedula.TabIndex = 1;
             // 
             // button1
             // 
@@ -96,6 +96,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Buscar";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label2
             // 
@@ -182,23 +183,23 @@
             this.Finalidad.HeaderText = "Estado";
             this.Finalidad.Name = "Finalidad";
             // 
-            // textBox2
+            // textNombre
             // 
-            this.textBox2.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBox2.Location = new System.Drawing.Point(107, 96);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(138, 20);
-            this.textBox2.TabIndex = 5;
+            this.textNombre.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.textNombre.Location = new System.Drawing.Point(107, 96);
+            this.textNombre.Name = "textNombre";
+            this.textNombre.ReadOnly = true;
+            this.textNombre.Size = new System.Drawing.Size(138, 20);
+            this.textNombre.TabIndex = 5;
             // 
-            // textBox3
+            // textApellido
             // 
-            this.textBox3.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBox3.Location = new System.Drawing.Point(314, 95);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(138, 20);
-            this.textBox3.TabIndex = 6;
+            this.textApellido.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.textApellido.Location = new System.Drawing.Point(314, 95);
+            this.textApellido.Name = "textApellido";
+            this.textApellido.ReadOnly = true;
+            this.textApellido.Size = new System.Drawing.Size(138, 20);
+            this.textApellido.TabIndex = 6;
             // 
             // label3
             // 
@@ -241,6 +242,7 @@
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.YellowGreen;
+            this.button2.Enabled = false;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button2.Location = new System.Drawing.Point(45, 223);
@@ -254,6 +256,7 @@
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.Firebrick;
+            this.button4.Enabled = false;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button4.Location = new System.Drawing.Point(309, 223);
@@ -275,13 +278,13 @@
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // textBox4
+            // textLibro
             // 
-            this.textBox4.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBox4.Location = new System.Drawing.Point(107, 131);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(180, 20);
-            this.textBox4.TabIndex = 22;
+            this.textLibro.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.textLibro.Location = new System.Drawing.Point(107, 131);
+            this.textLibro.Name = "textLibro";
+            this.textLibro.Size = new System.Drawing.Size(180, 20);
+            this.textLibro.TabIndex = 22;
             // 
             // label5
             // 
@@ -293,17 +296,17 @@
             this.label5.Text = "Tipo:";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
-            // comboBox1
+            // CB_tipo
             // 
-            this.comboBox1.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.CB_tipo.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.CB_tipo.FormattingEnabled = true;
+            this.CB_tipo.Items.AddRange(new object[] {
             "Domicilio",
             "Sala"});
-            this.comboBox1.Location = new System.Drawing.Point(338, 134);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(114, 21);
-            this.comboBox1.TabIndex = 25;
+            this.CB_tipo.Location = new System.Drawing.Point(338, 134);
+            this.CB_tipo.Name = "CB_tipo";
+            this.CB_tipo.Size = new System.Drawing.Size(114, 21);
+            this.CB_tipo.TabIndex = 25;
             // 
             // label7
             // 
@@ -315,14 +318,6 @@
             this.label7.Text = "Automatizado:";
             this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
-            // textBox6
-            // 
-            this.textBox6.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBox6.Location = new System.Drawing.Point(381, 161);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(71, 20);
-            this.textBox6.TabIndex = 29;
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -332,30 +327,30 @@
             this.label9.TabIndex = 28;
             this.label9.Text = "Beneficiarios:";
             // 
-            // comboBox2
+            // CB_automizado
             // 
-            this.comboBox2.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.CB_automizado.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.CB_automizado.FormattingEnabled = true;
+            this.CB_automizado.Items.AddRange(new object[] {
             "Si",
             "No"});
-            this.comboBox2.Location = new System.Drawing.Point(381, 190);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(71, 21);
-            this.comboBox2.TabIndex = 30;
+            this.CB_automizado.Location = new System.Drawing.Point(381, 190);
+            this.CB_automizado.Name = "CB_automizado";
+            this.CB_automizado.Size = new System.Drawing.Size(71, 21);
+            this.CB_automizado.TabIndex = 30;
             // 
-            // comboBox4
+            // CB_encargado
             // 
-            this.comboBox4.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Items.AddRange(new object[] {
+            this.CB_encargado.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.CB_encargado.FormattingEnabled = true;
+            this.CB_encargado.Items.AddRange(new object[] {
             "Damaris Ramírez",
             "Marta Valverde",
             "Oscar Rodríguez"});
-            this.comboBox4.Location = new System.Drawing.Point(107, 165);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(180, 21);
-            this.comboBox4.TabIndex = 40;
+            this.CB_encargado.Location = new System.Drawing.Point(107, 165);
+            this.CB_encargado.Name = "CB_encargado";
+            this.CB_encargado.Size = new System.Drawing.Size(180, 21);
+            this.CB_encargado.TabIndex = 40;
             // 
             // dateTimePicker1
             // 
@@ -364,21 +359,43 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 41;
             // 
+            // CB_beneficiarios
+            // 
+            this.CB_beneficiarios.FormattingEnabled = true;
+            this.CB_beneficiarios.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13"});
+            this.CB_beneficiarios.Location = new System.Drawing.Point(383, 160);
+            this.CB_beneficiarios.Name = "CB_beneficiarios";
+            this.CB_beneficiarios.Size = new System.Drawing.Size(69, 21);
+            this.CB_beneficiarios.TabIndex = 56;
+            // 
             // Libros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(970, 646);
+            this.Controls.Add(this.CB_beneficiarios);
             this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.comboBox4);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.CB_encargado);
+            this.Controls.Add(this.CB_automizado);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.CB_tipo);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.textLibro);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button2);
@@ -386,12 +403,12 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textApellido);
+            this.Controls.Add(this.textNombre);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.TextCedula);
             this.Controls.Add(this.label1);
             this.Location = new System.Drawing.Point(700, 500);
             this.Name = "Libros";
@@ -407,12 +424,12 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TextCedula;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textNombre;
+        private System.Windows.Forms.TextBox textApellido;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
@@ -420,13 +437,12 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textLibro;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox CB_tipo;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox CB_automizado;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cédula;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
@@ -438,7 +454,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn automatizado;
         private System.Windows.Forms.DataGridViewTextBoxColumn Encargado;
         private System.Windows.Forms.DataGridViewTextBoxColumn Finalidad;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox CB_encargado;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.ComboBox CB_beneficiarios;
     }
 }
