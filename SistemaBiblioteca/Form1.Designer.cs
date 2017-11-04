@@ -54,9 +54,9 @@
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(252, 141);
+            this.button1.Location = new System.Drawing.Point(317, 141);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(126, 57);
+            this.button1.Size = new System.Drawing.Size(159, 57);
             this.button1.TabIndex = 1;
             this.button1.Text = "Cubículos";
             this.button1.UseVisualStyleBackColor = false;
@@ -68,9 +68,9 @@
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(252, 204);
+            this.button2.Location = new System.Drawing.Point(317, 204);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(126, 54);
+            this.button2.Size = new System.Drawing.Size(159, 54);
             this.button2.TabIndex = 2;
             this.button2.Text = "Computadoras";
             this.button2.UseVisualStyleBackColor = false;
@@ -82,9 +82,9 @@
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button3.Location = new System.Drawing.Point(252, 264);
+            this.button3.Location = new System.Drawing.Point(317, 264);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(126, 52);
+            this.button3.Size = new System.Drawing.Size(159, 52);
             this.button3.TabIndex = 3;
             this.button3.Text = "Libros";
             this.button3.UseVisualStyleBackColor = false;
@@ -96,9 +96,9 @@
             this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button4.Location = new System.Drawing.Point(252, 322);
+            this.button4.Location = new System.Drawing.Point(317, 322);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(126, 31);
+            this.button4.Size = new System.Drawing.Size(159, 31);
             this.button4.TabIndex = 4;
             this.button4.Text = "Clientes";
             this.button4.UseVisualStyleBackColor = false;
@@ -110,9 +110,9 @@
             this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button5.Location = new System.Drawing.Point(252, 359);
+            this.button5.Location = new System.Drawing.Point(317, 359);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(126, 31);
+            this.button5.Size = new System.Drawing.Size(159, 31);
             this.button5.TabIndex = 5;
             this.button5.Text = "Estadísticas";
             this.button5.UseVisualStyleBackColor = false;
@@ -124,7 +124,7 @@
             this.label2.BackColor = System.Drawing.SystemColors.Window;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label2.Location = new System.Drawing.Point(25, 30);
+            this.label2.Location = new System.Drawing.Point(157, 51);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(365, 29);
             this.label2.TabIndex = 6;
@@ -135,7 +135,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(417, 415);
+            this.ClientSize = new System.Drawing.Size(582, 459);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);

@@ -52,15 +52,13 @@
             this.textNombre = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-
             this.TextCedula = new System.Windows.Forms.TextBox();
             this.textFinalidad = new System.Windows.Forms.TextBox();
             this.dtCubiculo = new System.Windows.Forms.DateTimePicker();
-
-
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.CB_beneficiarios = new System.Windows.Forms.ComboBox();
             this.CB_cubiculo = new System.Windows.Forms.ComboBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -98,41 +96,49 @@
             // 
             this.Cédula.HeaderText = "Cédula";
             this.Cédula.Name = "Cédula";
+            this.Cédula.ReadOnly = true;
             // 
             // Nombre
             // 
             this.Nombre.HeaderText = "Nombre";
             this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
             // 
             // Apellido
             // 
             this.Apellido.HeaderText = "Apellido";
             this.Apellido.Name = "Apellido";
+            this.Apellido.ReadOnly = true;
             // 
             // HoraInicio
             // 
             this.HoraInicio.HeaderText = "Hora Inico";
             this.HoraInicio.Name = "HoraInicio";
+            this.HoraInicio.ReadOnly = true;
             // 
             // Beneficiarios
             // 
             this.Beneficiarios.HeaderText = "Beneficiarios";
             this.Beneficiarios.Name = "Beneficiarios";
+            this.Beneficiarios.ReadOnly = true;
             // 
             // Cubículo
             // 
             this.Cubículo.HeaderText = "Cubículo";
             this.Cubículo.Name = "Cubículo";
+            this.Cubículo.ReadOnly = true;
             // 
             // Finalidad
             // 
             this.Finalidad.HeaderText = "Finalidad";
             this.Finalidad.Name = "Finalidad";
+            this.Finalidad.ReadOnly = true;
             // 
             // Encargado
             // 
             this.Encargado.HeaderText = "Encargado";
             this.Encargado.Name = "Encargado";
+            this.Encargado.ReadOnly = true;
             // 
             // button5
             // 
@@ -294,8 +300,17 @@
             this.textFinalidad.Size = new System.Drawing.Size(138, 20);
             this.textFinalidad.TabIndex = 51;
             // 
+            // dtCubiculo
+            // 
+            this.dtCubiculo.Enabled = false;
+            this.dtCubiculo.Location = new System.Drawing.Point(0, 0);
+            this.dtCubiculo.Name = "dtCubiculo";
+            this.dtCubiculo.Size = new System.Drawing.Size(200, 20);
+            this.dtCubiculo.TabIndex = 57;
+            // 
             // monthCalendar1
             // 
+            this.monthCalendar1.Enabled = false;
             this.monthCalendar1.Location = new System.Drawing.Point(576, 57);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 54;
@@ -334,20 +349,30 @@
             this.CB_cubiculo.Size = new System.Drawing.Size(121, 21);
             this.CB_cubiculo.TabIndex = 56;
             // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(669, 230);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(124, 17);
+            this.radioButton1.TabIndex = 58;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Fecha Personalizada";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
             // Cubículos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(914, 649);
+            this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.CB_cubiculo);
             this.Controls.Add(this.CB_beneficiarios);
             this.Controls.Add(this.monthCalendar1);
-
             this.Controls.Add(this.dtCubiculo);
             this.Controls.Add(this.textFinalidad);
-
-
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.button4);
@@ -412,5 +437,6 @@
         private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.ComboBox CB_beneficiarios;
         private System.Windows.Forms.ComboBox CB_cubiculo;
+        private System.Windows.Forms.RadioButton radioButton1;
     }
 }
