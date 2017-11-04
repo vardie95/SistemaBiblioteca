@@ -54,6 +54,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lblHoy = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -283,12 +284,22 @@
             this.textBox1.Size = new System.Drawing.Size(138, 20);
             this.textBox1.TabIndex = 31;
             // 
+            // lblHoy
+            // 
+            this.lblHoy.AutoSize = true;
+            this.lblHoy.Location = new System.Drawing.Point(7, 7);
+            this.lblHoy.Name = "lblHoy";
+            this.lblHoy.Size = new System.Drawing.Size(37, 13);
+            this.lblHoy.TabIndex = 60;
+            this.lblHoy.Text = "Fecha";
+            // 
             // Computadora
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(914, 649);
+            this.Controls.Add(this.lblHoy);
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.textBox4);
@@ -346,5 +357,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lblHoy;
     }
 }
