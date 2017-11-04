@@ -59,6 +59,7 @@
             this.CB_beneficiarios = new System.Windows.Forms.ComboBox();
             this.CB_cubiculo = new System.Windows.Forms.ComboBox();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.lblHoy = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -361,12 +362,22 @@
             this.radioButton1.UseVisualStyleBackColor = true;
             this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
+            // lblHoy
+            // 
+            this.lblHoy.AutoSize = true;
+            this.lblHoy.Location = new System.Drawing.Point(12, 23);
+            this.lblHoy.Name = "lblHoy";
+            this.lblHoy.Size = new System.Drawing.Size(37, 13);
+            this.lblHoy.TabIndex = 59;
+            this.lblHoy.Text = "Fecha";
+            // 
             // Cubículos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(914, 649);
+            this.Controls.Add(this.lblHoy);
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.CB_cubiculo);
             this.Controls.Add(this.CB_beneficiarios);
@@ -438,5 +449,6 @@
         private System.Windows.Forms.ComboBox CB_beneficiarios;
         private System.Windows.Forms.ComboBox CB_cubiculo;
         private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.Label lblHoy;
     }
 }
