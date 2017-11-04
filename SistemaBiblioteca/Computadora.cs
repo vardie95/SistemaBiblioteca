@@ -19,6 +19,8 @@ namespace SistemaBiblioteca
             InitializeComponent();
             inicializarFechaActual();
             rbFechaActual.Checked = true;
+            dtHora.Format = DateTimePickerFormat.Time;
+            dtHora.ShowUpDown = true;
         }
 
         private void inicializarFechaActual()
@@ -56,11 +58,15 @@ namespace SistemaBiblioteca
         private void rbFechaActual_CheckedChanged(object sender, EventArgs e)
         {
             dtFecha.Enabled = false;
+            dtFecha.SetDate(DateTime.Today);
+            dtHora.Enabled = false;
+            dtHora.Text = DateTime.Now.ToString("HH:mm:ss tt");
         }
 
         private void rbPersonalizado_CheckedChanged(object sender, EventArgs e)
         {
             dtFecha.Enabled = true;
+            dtHora.Enabled = true;
         }
     }
 }

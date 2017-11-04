@@ -47,16 +47,16 @@
             this.label8 = new System.Windows.Forms.Label();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.lblHoy = new System.Windows.Forms.Label();
             this.rbPersonalizado = new System.Windows.Forms.RadioButton();
             this.rbFechaActual = new System.Windows.Forms.RadioButton();
+            this.lblNombre = new System.Windows.Forms.Label();
+            this.dtHora = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -138,7 +138,7 @@
             // textBox6
             // 
             this.textBox6.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBox6.Location = new System.Drawing.Point(413, 135);
+            this.textBox6.Location = new System.Drawing.Point(370, 135);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(71, 20);
             this.textBox6.TabIndex = 49;
@@ -146,7 +146,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(338, 138);
+            this.label9.Location = new System.Drawing.Point(283, 138);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(70, 13);
             this.label9.TabIndex = 48;
@@ -221,41 +221,14 @@
             this.label6.TabIndex = 38;
             this.label6.Text = "Computadora:";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(290, 103);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(50, 13);
-            this.label4.TabIndex = 37;
-            this.label4.Text = "Apellido: ";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(64, 106);
+            this.label3.Location = new System.Drawing.Point(54, 99);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 13);
             this.label3.TabIndex = 36;
             this.label3.Text = "Nombre: ";
-            // 
-            // textBox3
-            // 
-            this.textBox3.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBox3.Location = new System.Drawing.Point(346, 99);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(138, 20);
-            this.textBox3.TabIndex = 35;
-            // 
-            // textBox2
-            // 
-            this.textBox2.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBox2.Location = new System.Drawing.Point(139, 100);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(138, 20);
-            this.textBox2.TabIndex = 34;
             // 
             // label2
             // 
@@ -271,9 +244,9 @@
             this.button1.BackColor = System.Drawing.Color.SteelBlue;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(384, 54);
+            this.button1.Location = new System.Drawing.Point(341, 58);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 36);
+            this.button1.Size = new System.Drawing.Size(100, 29);
             this.button1.TabIndex = 32;
             this.button1.Text = "Buscar";
             this.button1.UseVisualStyleBackColor = false;
@@ -298,7 +271,7 @@
             // rbPersonalizado
             // 
             this.rbPersonalizado.AutoSize = true;
-            this.rbPersonalizado.Location = new System.Drawing.Point(731, 228);
+            this.rbPersonalizado.Location = new System.Drawing.Point(728, 255);
             this.rbPersonalizado.Name = "rbPersonalizado";
             this.rbPersonalizado.Size = new System.Drawing.Size(91, 17);
             this.rbPersonalizado.TabIndex = 61;
@@ -310,7 +283,7 @@
             // rbFechaActual
             // 
             this.rbFechaActual.AutoSize = true;
-            this.rbFechaActual.Location = new System.Drawing.Point(638, 228);
+            this.rbFechaActual.Location = new System.Drawing.Point(635, 255);
             this.rbFechaActual.Name = "rbFechaActual";
             this.rbFechaActual.Size = new System.Drawing.Size(87, 17);
             this.rbFechaActual.TabIndex = 62;
@@ -319,12 +292,40 @@
             this.rbFechaActual.UseVisualStyleBackColor = true;
             this.rbFechaActual.CheckedChanged += new System.EventHandler(this.rbFechaActual_CheckedChanged);
             // 
+            // lblNombre
+            // 
+            this.lblNombre.AutoSize = true;
+            this.lblNombre.Location = new System.Drawing.Point(140, 99);
+            this.lblNombre.Name = "lblNombre";
+            this.lblNombre.Size = new System.Drawing.Size(35, 13);
+            this.lblNombre.TabIndex = 63;
+            this.lblNombre.Text = "####";
+            // 
+            // dtHora
+            // 
+            this.dtHora.Location = new System.Drawing.Point(671, 227);
+            this.dtHora.Name = "dtHora";
+            this.dtHora.Size = new System.Drawing.Size(151, 20);
+            this.dtHora.TabIndex = 64;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(632, 230);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(33, 13);
+            this.label4.TabIndex = 65;
+            this.label4.Text = "Hora:";
+            // 
             // Computadora
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(914, 649);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.dtHora);
+            this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.rbFechaActual);
             this.Controls.Add(this.rbPersonalizado);
             this.Controls.Add(this.lblHoy);
@@ -337,10 +338,7 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.comboBox4);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
@@ -378,15 +376,15 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label lblHoy;
         private System.Windows.Forms.RadioButton rbPersonalizado;
         private System.Windows.Forms.RadioButton rbFechaActual;
+        private System.Windows.Forms.Label lblNombre;
+        private System.Windows.Forms.DateTimePicker dtHora;
+        private System.Windows.Forms.Label label4;
     }
 }
