@@ -41,7 +41,7 @@
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.dtFecha = new System.Windows.Forms.MonthCalendar();
             this.button4 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
@@ -55,6 +55,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.lblHoy = new System.Windows.Forms.Label();
+            this.rbPersonalizado = new System.Windows.Forms.RadioButton();
+            this.rbFechaActual = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -158,11 +160,11 @@
             this.textBox4.Size = new System.Drawing.Size(138, 20);
             this.textBox4.TabIndex = 44;
             // 
-            // monthCalendar1
+            // dtFecha
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(611, 66);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 43;
+            this.dtFecha.Location = new System.Drawing.Point(600, 54);
+            this.dtFecha.Name = "dtFecha";
+            this.dtFecha.TabIndex = 43;
             // 
             // button4
             // 
@@ -293,17 +295,43 @@
             this.lblHoy.TabIndex = 60;
             this.lblHoy.Text = "Fecha";
             // 
+            // rbPersonalizado
+            // 
+            this.rbPersonalizado.AutoSize = true;
+            this.rbPersonalizado.Location = new System.Drawing.Point(731, 228);
+            this.rbPersonalizado.Name = "rbPersonalizado";
+            this.rbPersonalizado.Size = new System.Drawing.Size(91, 17);
+            this.rbPersonalizado.TabIndex = 61;
+            this.rbPersonalizado.TabStop = true;
+            this.rbPersonalizado.Text = "Personalizado";
+            this.rbPersonalizado.UseVisualStyleBackColor = true;
+            this.rbPersonalizado.CheckedChanged += new System.EventHandler(this.rbPersonalizado_CheckedChanged);
+            // 
+            // rbFechaActual
+            // 
+            this.rbFechaActual.AutoSize = true;
+            this.rbFechaActual.Location = new System.Drawing.Point(638, 228);
+            this.rbFechaActual.Name = "rbFechaActual";
+            this.rbFechaActual.Size = new System.Drawing.Size(87, 17);
+            this.rbFechaActual.TabIndex = 62;
+            this.rbFechaActual.TabStop = true;
+            this.rbFechaActual.Text = "Fecha actual";
+            this.rbFechaActual.UseVisualStyleBackColor = true;
+            this.rbFechaActual.CheckedChanged += new System.EventHandler(this.rbFechaActual_CheckedChanged);
+            // 
             // Computadora
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(914, 649);
+            this.Controls.Add(this.rbFechaActual);
+            this.Controls.Add(this.rbPersonalizado);
             this.Controls.Add(this.lblHoy);
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.monthCalendar1);
+            this.Controls.Add(this.dtFecha);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label8);
@@ -344,7 +372,7 @@
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.MonthCalendar dtFecha;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label8;
@@ -358,5 +386,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label lblHoy;
+        private System.Windows.Forms.RadioButton rbPersonalizado;
+        private System.Windows.Forms.RadioButton rbFechaActual;
     }
 }

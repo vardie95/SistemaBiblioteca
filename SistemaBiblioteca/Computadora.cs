@@ -18,6 +18,7 @@ namespace SistemaBiblioteca
         {
             InitializeComponent();
             inicializarFechaActual();
+            rbFechaActual.Checked = true;
         }
 
         private void inicializarFechaActual()
@@ -50,6 +51,16 @@ namespace SistemaBiblioteca
         {
             this.Close();
             new Form1().Show();
+        }
+
+        private void rbFechaActual_CheckedChanged(object sender, EventArgs e)
+        {
+            dtFecha.Enabled = false;
+        }
+
+        private void rbPersonalizado_CheckedChanged(object sender, EventArgs e)
+        {
+            dtFecha.Enabled = true;
         }
     }
 }
