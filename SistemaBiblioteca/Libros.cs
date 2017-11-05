@@ -282,6 +282,9 @@ namespace SistemaBiblioteca
             tablaSalida.Columns.Add(new DataColumn("Encargado"));
             return tablaSalida;
         }
+
+
+
         private void CargarPrestamos(string fecha)
         {
             try
