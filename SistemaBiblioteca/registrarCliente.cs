@@ -305,5 +305,10 @@ namespace SistemaBiblioteca
         {
             clearRegistro();
         }
+
+        private void dgClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

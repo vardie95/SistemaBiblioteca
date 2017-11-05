@@ -23,6 +23,7 @@ namespace SistemaBiblioteca
             rbFechaActual.Checked = true;
             dtHora.Format = DateTimePickerFormat.Time;
             dtHora.ShowUpDown = true;
+            CargarPrestamos();
             con = new Conexion(@"Data Source = localhost;port=3306;Initial"
             + " Catalog=sistemabiblioteca;User Id=root;password = '' ");
 
@@ -248,7 +249,45 @@ namespace SistemaBiblioteca
             tablaSalida.Columns.Add(new DataColumn("Encargado"));
             return tablaSalida;
         }
-      
+        private void CargarPrestamos()
+        {
+            try
+            {
+               
+                con.Abrir();
+                con.CargarQuery("SELECT cliente.cedula,cliente.Nombre,cliente.Apellido,cubiculo.horaInicio,cubiculo.beneficiarios,"+
+                    "cubiculo.cubiculo,cubiculo.finalidad, cubiculo.encargado FROM cubiculo,cliente WHERE cliente.cedula=cubiculo.cedula;");
+                DataTable tablaCliente = InicializarTabla();
+
+                IDataReader reader = con.GetSalida();
+                DataRow row;
+                while (reader.Read())
+                {
+                    row = tablaCliente.NewRow();
+                    row["Cédula"] = reader["cliente.cedula"].ToString();
+                    row["Nombre"] = reader["cliente.nombre"].ToString();
+                    row["Apellido"] = reader["cliente.apellido"].ToString();
+                    row["Hora Inicio"] = reader["cubiculo.horaInicio"].ToString();
+                    row["Beneficiarios"] = reader["cubiculo.beneficiarios"].ToString();
+                    row["Cubículo"] = reader["cubiculo.cubiculo"].ToString();
+                    row["Finalidad"] = reader["cubiculo.finalidad"].ToString();
+                    row["Encargado"] = reader["cubiculo.encargado"].ToString();
+                    tablaCliente.Rows.Add(row);
+                }
+                dgCubiculos.Columns.Clear();
+                dgCubiculos.DataSource = tablaCliente;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex, "Error");
+
+            }
+            finally
+            {
+                con.Cerrar();
+            }
+        }
+
 
     }  
 
