@@ -234,9 +234,6 @@ namespace SistemaBiblioteca
             CB_beneficiarios.SelectedIndex = -1;
             CB_cubiculo.SelectedIndex = -1;
             CB_encargado.SelectedIndex = -1;
-
-
-
         }
         private DataTable InicializarTabla()
         {

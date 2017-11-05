@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgComputadora = new System.Windows.Forms.DataGridView();
             this.Cédula = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -38,26 +39,31 @@
             this.NuComputadora = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Encargado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button5 = new System.Windows.Forms.Button();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtBeneficiario = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtComputadora = new System.Windows.Forms.TextBox();
             this.dtFecha = new System.Windows.Forms.MonthCalendar();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnFinalizar = new System.Windows.Forms.Button();
+            this.btnAgregar = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.cbEncargado = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.lblHoy = new System.Windows.Forms.Label();
             this.rbPersonalizado = new System.Windows.Forms.RadioButton();
             this.rbFechaActual = new System.Windows.Forms.RadioButton();
-            this.lblNombre = new System.Windows.Forms.Label();
             this.dtHora = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textApellido = new System.Windows.Forms.TextBox();
+            this.textNombre = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.TextCedula = new System.Windows.Forms.TextBox();
+            this.filtrarMes = new System.Windows.Forms.Button();
+            this.borrarPrestamo = new System.Windows.Forms.Button();
+            this.timerHora = new System.Windows.Forms.Timer(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.dgComputadora)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -70,12 +76,11 @@
             this.label1.Size = new System.Drawing.Size(206, 33);
             this.label1.TabIndex = 0;
             this.label1.Text = "Computadoras";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // dataGridView1
+            // dgComputadora
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgComputadora.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgComputadora.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Cédula,
             this.Nombre,
             this.Apellido,
@@ -83,10 +88,10 @@
             this.Beneficiarios,
             this.NuComputadora,
             this.Encargado});
-            this.dataGridView1.Location = new System.Drawing.Point(82, 285);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(747, 352);
-            this.dataGridView1.TabIndex = 4;
+            this.dgComputadora.Location = new System.Drawing.Point(82, 285);
+            this.dgComputadora.Name = "dgComputadora";
+            this.dgComputadora.Size = new System.Drawing.Size(747, 352);
+            this.dgComputadora.TabIndex = 4;
             // 
             // Cédula
             // 
@@ -135,13 +140,15 @@
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // textBox6
+            // txtBeneficiario
             // 
-            this.textBox6.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBox6.Location = new System.Drawing.Point(370, 135);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(71, 20);
-            this.textBox6.TabIndex = 49;
+            this.txtBeneficiario.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.txtBeneficiario.Location = new System.Drawing.Point(359, 135);
+            this.txtBeneficiario.MaxLength = 2;
+            this.txtBeneficiario.Name = "txtBeneficiario";
+            this.txtBeneficiario.Size = new System.Drawing.Size(71, 20);
+            this.txtBeneficiario.TabIndex = 49;
+            this.txtBeneficiario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumbers);
             // 
             // label9
             // 
@@ -152,13 +159,15 @@
             this.label9.TabIndex = 48;
             this.label9.Text = "Beneficiarios:";
             // 
-            // textBox4
+            // txtComputadora
             // 
-            this.textBox4.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBox4.Location = new System.Drawing.Point(139, 135);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(138, 20);
-            this.textBox4.TabIndex = 44;
+            this.txtComputadora.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.txtComputadora.Location = new System.Drawing.Point(139, 135);
+            this.txtComputadora.MaxLength = 2;
+            this.txtComputadora.Name = "txtComputadora";
+            this.txtComputadora.Size = new System.Drawing.Size(138, 20);
+            this.txtComputadora.TabIndex = 44;
+            this.txtComputadora.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumbers);
             // 
             // dtFecha
             // 
@@ -166,29 +175,30 @@
             this.dtFecha.Name = "dtFecha";
             this.dtFecha.TabIndex = 43;
             // 
-            // button4
+            // btnFinalizar
             // 
-            this.button4.BackColor = System.Drawing.Color.Firebrick;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button4.Location = new System.Drawing.Point(222, 227);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(110, 45);
-            this.button4.TabIndex = 42;
-            this.button4.Text = "Finalizar Prestamo";
-            this.button4.UseVisualStyleBackColor = false;
+            this.btnFinalizar.BackColor = System.Drawing.Color.IndianRed;
+            this.btnFinalizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFinalizar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnFinalizar.Location = new System.Drawing.Point(222, 227);
+            this.btnFinalizar.Name = "btnFinalizar";
+            this.btnFinalizar.Size = new System.Drawing.Size(110, 45);
+            this.btnFinalizar.TabIndex = 42;
+            this.btnFinalizar.Text = "Finalizar Prestamo";
+            this.btnFinalizar.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // btnAgregar
             // 
-            this.button2.BackColor = System.Drawing.Color.YellowGreen;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(77, 227);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(113, 45);
-            this.button2.TabIndex = 41;
-            this.button2.Text = "Agregar Prestamo";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnAgregar.BackColor = System.Drawing.Color.YellowGreen;
+            this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnAgregar.Location = new System.Drawing.Point(77, 227);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(113, 45);
+            this.btnAgregar.TabIndex = 41;
+            this.btnAgregar.Text = "Agregar Prestamo";
+            this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // label8
             // 
@@ -199,18 +209,18 @@
             this.label8.TabIndex = 40;
             this.label8.Text = "Encargado:";
             // 
-            // comboBox4
+            // cbEncargado
             // 
-            this.comboBox4.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Items.AddRange(new object[] {
+            this.cbEncargado.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.cbEncargado.FormattingEnabled = true;
+            this.cbEncargado.Items.AddRange(new object[] {
             "Damaris Ramírez",
             "Marta Valverde",
             "Oscar Rodríguez"});
-            this.comboBox4.Location = new System.Drawing.Point(139, 169);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(180, 21);
-            this.comboBox4.TabIndex = 39;
+            this.cbEncargado.Location = new System.Drawing.Point(139, 169);
+            this.cbEncargado.Name = "cbEncargado";
+            this.cbEncargado.Size = new System.Drawing.Size(180, 21);
+            this.cbEncargado.TabIndex = 39;
             // 
             // label6
             // 
@@ -220,45 +230,6 @@
             this.label6.Size = new System.Drawing.Size(73, 13);
             this.label6.TabIndex = 38;
             this.label6.Text = "Computadora:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(54, 99);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(50, 13);
-            this.label3.TabIndex = 36;
-            this.label3.Text = "Nombre: ";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(61, 66);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 13);
-            this.label2.TabIndex = 33;
-            this.label2.Text = "Cédula:";
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.SteelBlue;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(341, 58);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 29);
-            this.button1.TabIndex = 32;
-            this.button1.Text = "Buscar";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBox1.Location = new System.Drawing.Point(139, 63);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(138, 20);
-            this.textBox1.TabIndex = 31;
             // 
             // lblHoy
             // 
@@ -293,15 +264,6 @@
             this.rbFechaActual.UseVisualStyleBackColor = true;
             this.rbFechaActual.CheckedChanged += new System.EventHandler(this.rbFechaActual_CheckedChanged);
             // 
-            // lblNombre
-            // 
-            this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(140, 99);
-            this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(35, 13);
-            this.lblNombre.TabIndex = 63;
-            this.lblNombre.Text = "####";
-            // 
             // dtHora
             // 
             this.dtHora.Location = new System.Drawing.Point(671, 227);
@@ -318,39 +280,143 @@
             this.label4.TabIndex = 65;
             this.label4.Text = "Hora:";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(290, 104);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(50, 13);
+            this.label2.TabIndex = 72;
+            this.label2.Text = "Apellido: ";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(64, 107);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(50, 13);
+            this.label3.TabIndex = 71;
+            this.label3.Text = "Nombre: ";
+            // 
+            // textApellido
+            // 
+            this.textApellido.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.textApellido.Enabled = false;
+            this.textApellido.Location = new System.Drawing.Point(346, 100);
+            this.textApellido.Name = "textApellido";
+            this.textApellido.ReadOnly = true;
+            this.textApellido.Size = new System.Drawing.Size(138, 20);
+            this.textApellido.TabIndex = 70;
+            // 
+            // textNombre
+            // 
+            this.textNombre.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.textNombre.Enabled = false;
+            this.textNombre.Location = new System.Drawing.Point(139, 101);
+            this.textNombre.Name = "textNombre";
+            this.textNombre.ReadOnly = true;
+            this.textNombre.Size = new System.Drawing.Size(138, 20);
+            this.textNombre.TabIndex = 69;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(64, 67);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(43, 13);
+            this.label5.TabIndex = 68;
+            this.label5.Text = "Cédula:";
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnBuscar.Location = new System.Drawing.Point(384, 55);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(100, 36);
+            this.btnBuscar.TabIndex = 67;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // TextCedula
+            // 
+            this.TextCedula.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.TextCedula.Location = new System.Drawing.Point(139, 64);
+            this.TextCedula.MaxLength = 10;
+            this.TextCedula.Name = "TextCedula";
+            this.TextCedula.Size = new System.Drawing.Size(138, 20);
+            this.TextCedula.TabIndex = 66;
+            this.TextCedula.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.onlyNumbers);
+            // 
+            // filtrarMes
+            // 
+            this.filtrarMes.BackColor = System.Drawing.Color.SteelBlue;
+            this.filtrarMes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.filtrarMes.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.filtrarMes.Location = new System.Drawing.Point(504, 245);
+            this.filtrarMes.Name = "filtrarMes";
+            this.filtrarMes.Size = new System.Drawing.Size(100, 27);
+            this.filtrarMes.TabIndex = 73;
+            this.filtrarMes.Text = "Filtrar por mes";
+            this.filtrarMes.UseVisualStyleBackColor = false;
+            // 
+            // borrarPrestamo
+            // 
+            this.borrarPrestamo.BackColor = System.Drawing.Color.Brown;
+            this.borrarPrestamo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.borrarPrestamo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.borrarPrestamo.Location = new System.Drawing.Point(388, 245);
+            this.borrarPrestamo.Name = "borrarPrestamo";
+            this.borrarPrestamo.Size = new System.Drawing.Size(110, 27);
+            this.borrarPrestamo.TabIndex = 74;
+            this.borrarPrestamo.Text = "Borrar prestamo";
+            this.borrarPrestamo.UseVisualStyleBackColor = false;
+            // 
+            // timerHora
+            // 
+            this.timerHora.Enabled = true;
+            this.timerHora.Interval = 1000;
+            this.timerHora.Tick += new System.EventHandler(this.timerHora_Tick_1);
+            // 
             // Computadora
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(914, 649);
+            this.Controls.Add(this.borrarPrestamo);
+            this.Controls.Add(this.filtrarMes);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.textApellido);
+            this.Controls.Add(this.textNombre);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.btnBuscar);
+            this.Controls.Add(this.TextCedula);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.dtHora);
-            this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.rbFechaActual);
             this.Controls.Add(this.rbPersonalizado);
             this.Controls.Add(this.lblHoy);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.txtBeneficiario);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.txtComputadora);
             this.Controls.Add(this.dtFecha);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnFinalizar);
+            this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.comboBox4);
+            this.Controls.Add(this.cbEncargado);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button5);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgComputadora);
             this.Controls.Add(this.label1);
             this.Location = new System.Drawing.Point(4000, 0);
             this.Name = "Computadora";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cubiculos";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgComputadora)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -359,7 +425,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgComputadora;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cédula;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
@@ -368,24 +434,29 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Beneficiarios;
         private System.Windows.Forms.DataGridViewTextBoxColumn NuComputadora;
         private System.Windows.Forms.DataGridViewTextBoxColumn Encargado;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtBeneficiario;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtComputadora;
         private System.Windows.Forms.MonthCalendar dtFecha;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnFinalizar;
+        private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox cbEncargado;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label lblHoy;
         private System.Windows.Forms.RadioButton rbPersonalizado;
         private System.Windows.Forms.RadioButton rbFechaActual;
-        private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.DateTimePicker dtHora;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textApellido;
+        private System.Windows.Forms.TextBox textNombre;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.TextBox TextCedula;
+        private System.Windows.Forms.Button filtrarMes;
+        private System.Windows.Forms.Button borrarPrestamo;
+        private System.Windows.Forms.Timer timerHora;
     }
 }
