@@ -61,8 +61,13 @@
             this.label9 = new System.Windows.Forms.Label();
             this.CB_automizado = new System.Windows.Forms.ComboBox();
             this.CB_encargado = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.CB_beneficiarios = new System.Windows.Forms.ComboBox();
+            this.dtFecha = new System.Windows.Forms.MonthCalendar();
+            this.label10 = new System.Windows.Forms.Label();
+            this.dtHora = new System.Windows.Forms.DateTimePicker();
+            this.rbFechaActual = new System.Windows.Forms.RadioButton();
+            this.rbPersonalizado = new System.Windows.Forms.RadioButton();
+            this.lblHoy = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -124,9 +129,9 @@
             this.automatizado,
             this.Encargado,
             this.Finalidad});
-            this.dataGridView1.Location = new System.Drawing.Point(45, 289);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 286);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(918, 348);
+            this.dataGridView1.Size = new System.Drawing.Size(946, 348);
             this.dataGridView1.TabIndex = 4;
             // 
             // Cédula
@@ -353,13 +358,6 @@
             this.CB_encargado.Size = new System.Drawing.Size(180, 21);
             this.CB_encargado.TabIndex = 40;
             // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(631, 66);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 41;
-            // 
             // CB_beneficiarios
             // 
             this.CB_beneficiarios.FormattingEnabled = true;
@@ -382,14 +380,75 @@
             this.CB_beneficiarios.Size = new System.Drawing.Size(69, 21);
             this.CB_beneficiarios.TabIndex = 56;
             // 
+            // dtFecha
+            // 
+            this.dtFecha.Location = new System.Drawing.Point(614, 50);
+            this.dtFecha.Name = "dtFecha";
+            this.dtFecha.TabIndex = 57;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(647, 228);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(33, 13);
+            this.label10.TabIndex = 67;
+            this.label10.Text = "Hora:";
+            // 
+            // dtHora
+            // 
+            this.dtHora.Location = new System.Drawing.Point(686, 223);
+            this.dtHora.Name = "dtHora";
+            this.dtHora.Size = new System.Drawing.Size(151, 20);
+            this.dtHora.TabIndex = 66;
+            this.dtHora.ValueChanged += new System.EventHandler(this.dtHora_ValueChanged);
+            // 
+            // rbFechaActual
+            // 
+            this.rbFechaActual.AutoSize = true;
+            this.rbFechaActual.Location = new System.Drawing.Point(650, 251);
+            this.rbFechaActual.Name = "rbFechaActual";
+            this.rbFechaActual.Size = new System.Drawing.Size(87, 17);
+            this.rbFechaActual.TabIndex = 69;
+            this.rbFechaActual.TabStop = true;
+            this.rbFechaActual.Text = "Fecha actual";
+            this.rbFechaActual.UseVisualStyleBackColor = true;
+            this.rbFechaActual.CheckedChanged += new System.EventHandler(this.rbFechaActual_CheckedChanged);
+            // 
+            // rbPersonalizado
+            // 
+            this.rbPersonalizado.AutoSize = true;
+            this.rbPersonalizado.Location = new System.Drawing.Point(746, 251);
+            this.rbPersonalizado.Name = "rbPersonalizado";
+            this.rbPersonalizado.Size = new System.Drawing.Size(91, 17);
+            this.rbPersonalizado.TabIndex = 68;
+            this.rbPersonalizado.TabStop = true;
+            this.rbPersonalizado.Text = "Personalizado";
+            this.rbPersonalizado.UseVisualStyleBackColor = true;
+            this.rbPersonalizado.CheckedChanged += new System.EventHandler(this.rbPersonalizado_CheckedChanged);
+            // 
+            // lblHoy
+            // 
+            this.lblHoy.AutoSize = true;
+            this.lblHoy.Location = new System.Drawing.Point(9, 9);
+            this.lblHoy.Name = "lblHoy";
+            this.lblHoy.Size = new System.Drawing.Size(37, 13);
+            this.lblHoy.TabIndex = 70;
+            this.lblHoy.Text = "Fecha";
+            // 
             // Libros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(970, 646);
+            this.Controls.Add(this.lblHoy);
+            this.Controls.Add(this.rbFechaActual);
+            this.Controls.Add(this.rbPersonalizado);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.dtHora);
+            this.Controls.Add(this.dtFecha);
             this.Controls.Add(this.CB_beneficiarios);
-            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.CB_encargado);
             this.Controls.Add(this.CB_automizado);
             this.Controls.Add(this.label9);
@@ -457,7 +516,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Encargado;
         private System.Windows.Forms.DataGridViewTextBoxColumn Finalidad;
         private System.Windows.Forms.ComboBox CB_encargado;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.ComboBox CB_beneficiarios;
+        private System.Windows.Forms.MonthCalendar dtFecha;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DateTimePicker dtHora;
+        private System.Windows.Forms.RadioButton rbFechaActual;
+        private System.Windows.Forms.RadioButton rbPersonalizado;
+        private System.Windows.Forms.Label lblHoy;
     }
 }

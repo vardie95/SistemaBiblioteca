@@ -7,17 +7,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace SistemaBiblioteca
 {
     public partial class Libros : Form
     {
         Conexion con;
+        DateTime fechaHoy = DateTime.Today;
         public Libros()
         {
+            
             InitializeComponent();
+            inicializarFechaActual();
             con = new Conexion(@"Data Source = localhost;port=3306;Initial"
             + " Catalog=sistemabiblioteca;User Id=root;password = '' ");
+            rbFechaActual.Checked = true;
+            dtHora.Format = DateTimePickerFormat.Time;
+            dtHora.ShowUpDown = true;
+        }
+
+        private void inicializarFechaActual()
+        {
+
+            lblHoy.Text = fechaHoy.ToString("D", CultureInfo.CreateSpecificCulture("es-MX"));
         }
         private void label1_Click(object sender, EventArgs e)
         {
@@ -186,6 +199,23 @@ namespace SistemaBiblioteca
             }
         }
 
+        private void dtHora_ValueChanged(object sender, EventArgs e)
+        {
 
+        }
+
+        private void rbPersonalizado_CheckedChanged(object sender, EventArgs e)
+        {
+            dtFecha.Enabled = true;
+            dtHora.Enabled = true;
+        }
+
+        private void rbFechaActual_CheckedChanged(object sender, EventArgs e)
+        {
+            dtFecha.Enabled = false;
+            dtFecha.SetDate(DateTime.Today);
+            dtHora.Enabled = false;
+            dtHora.Text = DateTime.Now.ToString("HH:mm:ss tt");
+        }
     }
 }

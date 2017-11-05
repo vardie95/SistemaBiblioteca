@@ -269,6 +269,7 @@
             this.lblHoy.Size = new System.Drawing.Size(37, 13);
             this.lblHoy.TabIndex = 60;
             this.lblHoy.Text = "Fecha";
+            this.lblHoy.Click += new System.EventHandler(this.lblHoy_Click);
             // 
             // rbPersonalizado
             // 
@@ -309,6 +310,7 @@
             this.dtHora.Name = "dtHora";
             this.dtHora.Size = new System.Drawing.Size(151, 20);
             this.dtHora.TabIndex = 64;
+            this.dtHora.ValueChanged += new System.EventHandler(this.dtHora_ValueChanged);
             // 
             // label4
             // 

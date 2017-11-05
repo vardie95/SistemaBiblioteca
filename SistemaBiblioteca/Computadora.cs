@@ -73,5 +73,15 @@ namespace SistemaBiblioteca
         {
 
         }
+
+        private void dtHora_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblHoy_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
