@@ -120,6 +120,7 @@
             this.dgClientes.Name = "dgClientes";
             this.dgClientes.Size = new System.Drawing.Size(524, 285);
             this.dgClientes.TabIndex = 7;
+            this.dgClientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgClientes_CellContentClick);
             this.dgClientes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.LlnearCliente);
             // 
             // Cédula
