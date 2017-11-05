@@ -33,7 +33,7 @@ namespace SistemaBiblioteca
             dtHora.ShowUpDown = true;
 
             limpiarCampos();
-            CargarPrestamos();
+            CargarPrestamos("");
 
 
         }
@@ -100,7 +100,6 @@ namespace SistemaBiblioteca
                 if (textNombre.Text != "")
                 {
                     btnAgregar.Enabled = true;
-                    btnFinalizar.Enabled = true;
                 }
 
             }
@@ -128,7 +127,6 @@ namespace SistemaBiblioteca
                     textNombre.Text = "";
                     textApellido.Text = "";
                     btnAgregar.Enabled = false;
-                    btnFinalizar.Enabled = false;
                 }
             }
             catch (Exception ex)
@@ -178,7 +176,6 @@ namespace SistemaBiblioteca
             if (textNombre.Text == "")
             {
                 btnAgregar.Enabled = false;
-                btnFinalizar.Enabled = false;
             } 
         }
 
@@ -190,14 +187,14 @@ namespace SistemaBiblioteca
                 string error = validarCampos();
                 if (error == "")
                 {
-                    string fecha = dtFecha.SelectionEnd.ToString("d/MM/yyyyy");
+                    string fecha = dtFecha.SelectionEnd.ToString("d/MM/yyyy");
                     con.CargarQuery("INSERT INTO `computadoras`(`computadora`, `fecha`, `horaInicio`, `beneficiarios`, `encargado`, `cedula`) " +
                         " VALUES ('" + txtComputadora.Text.Trim() + "', '" + fecha + "', '" + dtHora.Text +
                         "', '" + txtBeneficiario.Text.Trim() + "', '" + cbEncargado.SelectedItem.ToString() + "', '" + TextCedula.Text.Trim() + "');");
                     con.GetSalida().Close();
                     MessageBox.Show("Prestamo computadora registrado");
                     limpiarCampos();
-                    CargarPrestamos();
+                    CargarPrestamos("");
                 }
                 else
                 {
@@ -227,7 +224,6 @@ namespace SistemaBiblioteca
             txtBeneficiario.Text = "";
             cbEncargado.SelectedIndex = -1;
             btnAgregar.Enabled = false;
-            btnFinalizar.Enabled = false;
 
         }
 
@@ -240,22 +236,31 @@ namespace SistemaBiblioteca
 
         }
 
-        private void CargarPrestamos()
+        private void CargarPrestamos(string fecha)
         {
             try
             {
                 dgComputadora.Columns.Clear();
                 con.Abrir();
-                con.CargarQuery("SELECT computadoras.computadora, computadoras.Fecha, computadoras.horaInicio, computadoras.horaFin," +
-                    " computadoras.beneficiarios, computadoras.encargado, computadoras.cedula, cliente.Nombre, cliente.Apellido FROM" +
-                    " `computadoras`,`cliente` WHERE computadoras.cedula = cliente.cedula;");
+                if (fecha == "")
+                {
+                    con.CargarQuery("SELECT computadoras.id, computadoras.computadora, computadoras.Fecha, computadoras.horaInicio, computadoras.horaFin," +
+                        " computadoras.beneficiarios, computadoras.encargado, computadoras.cedula, cliente.Nombre, cliente.Apellido FROM" +
+                        " `computadoras`,`cliente` WHERE computadoras.cedula = cliente.cedula;");
+                }
+                else
+                {
+                    con.CargarQuery("SELECT computadoras.id, computadoras.computadora, computadoras.Fecha, computadoras.horaInicio, computadoras.horaFin," +
+                        " computadoras.beneficiarios, computadoras.encargado, computadoras.cedula, cliente.Nombre, cliente.Apellido FROM" +
+                        " `computadoras`,`cliente` WHERE computadoras.cedula = cliente.cedula AND computadoras.Fecha like '%/"+ fecha + "';");
+                }
                 DataTable tablaCliente = InicializarTabla();
-
                 IDataReader reader = con.GetSalida();
                 DataRow row;
                 while (reader.Read())
                 {
                     row = tablaCliente.NewRow();
+                    row["id"] = reader["id"].ToString();
                     row["Fecha"] = reader["Fecha"].ToString();
                     row["Computadora"] = reader["computadora"].ToString();
                     row["Cedula"] = reader["cedula"].ToString();
@@ -270,6 +275,7 @@ namespace SistemaBiblioteca
                 }
                 dgComputadora.Columns.Clear();
                 dgComputadora.DataSource = tablaCliente;
+                dgComputadora.Columns["id"].Visible = false;
             }
             catch (Exception ex)
             {
@@ -285,6 +291,7 @@ namespace SistemaBiblioteca
         private DataTable InicializarTabla()
         {
             DataTable tablaSalida = new DataTable();
+            tablaSalida.Columns.Add(new DataColumn("id"));
             tablaSalida.Columns.Add(new DataColumn("Fecha"));
             tablaSalida.Columns.Add(new DataColumn("Computadora"));
             tablaSalida.Columns.Add(new DataColumn("Cedula"));
@@ -296,6 +303,62 @@ namespace SistemaBiblioteca
             tablaSalida.Columns.Add(new DataColumn("Encargado"));
 
             return tablaSalida;
+        }
+
+        private void btnFinalizar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int index = dgComputadora.CurrentCell.RowIndex;
+                con.Abrir();
+                string id = dgComputadora.Rows[index].Cells["id"].Value.ToString();
+                con.CargarQuery("UPDATE computadoras SET horaFin= '"+dtHora.Text+"' WHERE computadoras.id = "+id+";");
+                con.GetSalida().Close();
+                MessageBox.Show("Prestamo finalizado");
+                CargarPrestamos("");
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex, "Error");
+
+            }
+            finally
+            {
+                con.Cerrar();
+            }
+        }
+
+        private void btnBorrar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int index = dgComputadora.CurrentCell.RowIndex;
+                con.Abrir();
+                string id = dgComputadora.Rows[index].Cells["id"].Value.ToString();
+                con.CargarQuery("DELETE FROM `computadoras` WHERE id =" + id + "; ");
+                con.GetSalida().Close();
+                MessageBox.Show("Prestamo eliminado");
+                CargarPrestamos("");
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex, "Error");
+
+            }
+            finally
+            {
+                con.Cerrar();
+            }
+        }
+
+        private void filtrarMes_Click(object sender, EventArgs e)
+        {
+            string fecha = dtFecha.SelectionEnd.ToString("MM/yyyy");
+            CargarPrestamos(fecha);
         }
     }
 }

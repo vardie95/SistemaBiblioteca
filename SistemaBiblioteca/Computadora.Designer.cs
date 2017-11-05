@@ -43,7 +43,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtComputadora = new System.Windows.Forms.TextBox();
             this.dtFecha = new System.Windows.Forms.MonthCalendar();
-            this.btnFinalizar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.cbEncargado = new System.Windows.Forms.ComboBox();
@@ -61,8 +60,9 @@
             this.btnBuscar = new System.Windows.Forms.Button();
             this.TextCedula = new System.Windows.Forms.TextBox();
             this.filtrarMes = new System.Windows.Forms.Button();
-            this.borrarPrestamo = new System.Windows.Forms.Button();
+            this.btnBorrar = new System.Windows.Forms.Button();
             this.timerHora = new System.Windows.Forms.Timer(this.components);
+            this.btnFinalizar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgComputadora)).BeginInit();
             this.SuspendLayout();
             // 
@@ -88,9 +88,9 @@
             this.Beneficiarios,
             this.NuComputadora,
             this.Encargado});
-            this.dgComputadora.Location = new System.Drawing.Point(82, 285);
+            this.dgComputadora.Location = new System.Drawing.Point(82, 319);
             this.dgComputadora.Name = "dgComputadora";
-            this.dgComputadora.Size = new System.Drawing.Size(747, 352);
+            this.dgComputadora.Size = new System.Drawing.Size(747, 318);
             this.dgComputadora.TabIndex = 4;
             // 
             // Cédula
@@ -175,24 +175,12 @@
             this.dtFecha.Name = "dtFecha";
             this.dtFecha.TabIndex = 43;
             // 
-            // btnFinalizar
-            // 
-            this.btnFinalizar.BackColor = System.Drawing.Color.IndianRed;
-            this.btnFinalizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFinalizar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnFinalizar.Location = new System.Drawing.Point(222, 227);
-            this.btnFinalizar.Name = "btnFinalizar";
-            this.btnFinalizar.Size = new System.Drawing.Size(110, 45);
-            this.btnFinalizar.TabIndex = 42;
-            this.btnFinalizar.Text = "Finalizar Prestamo";
-            this.btnFinalizar.UseVisualStyleBackColor = false;
-            // 
             // btnAgregar
             // 
             this.btnAgregar.BackColor = System.Drawing.Color.YellowGreen;
             this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAgregar.Location = new System.Drawing.Point(77, 227);
+            this.btnAgregar.Location = new System.Drawing.Point(139, 214);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(113, 45);
             this.btnAgregar.TabIndex = 41;
@@ -355,24 +343,26 @@
             this.filtrarMes.BackColor = System.Drawing.Color.SteelBlue;
             this.filtrarMes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.filtrarMes.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.filtrarMes.Location = new System.Drawing.Point(504, 245);
+            this.filtrarMes.Location = new System.Drawing.Point(729, 286);
             this.filtrarMes.Name = "filtrarMes";
             this.filtrarMes.Size = new System.Drawing.Size(100, 27);
             this.filtrarMes.TabIndex = 73;
             this.filtrarMes.Text = "Filtrar por mes";
             this.filtrarMes.UseVisualStyleBackColor = false;
+            this.filtrarMes.Click += new System.EventHandler(this.filtrarMes_Click);
             // 
-            // borrarPrestamo
+            // btnBorrar
             // 
-            this.borrarPrestamo.BackColor = System.Drawing.Color.Brown;
-            this.borrarPrestamo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.borrarPrestamo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.borrarPrestamo.Location = new System.Drawing.Point(388, 245);
-            this.borrarPrestamo.Name = "borrarPrestamo";
-            this.borrarPrestamo.Size = new System.Drawing.Size(110, 27);
-            this.borrarPrestamo.TabIndex = 74;
-            this.borrarPrestamo.Text = "Borrar prestamo";
-            this.borrarPrestamo.UseVisualStyleBackColor = false;
+            this.btnBorrar.BackColor = System.Drawing.Color.Brown;
+            this.btnBorrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBorrar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnBorrar.Location = new System.Drawing.Point(613, 286);
+            this.btnBorrar.Name = "btnBorrar";
+            this.btnBorrar.Size = new System.Drawing.Size(110, 27);
+            this.btnBorrar.TabIndex = 74;
+            this.btnBorrar.Text = "Borrar prestamo";
+            this.btnBorrar.UseVisualStyleBackColor = false;
+            this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
             // 
             // timerHora
             // 
@@ -380,13 +370,26 @@
             this.timerHora.Interval = 1000;
             this.timerHora.Tick += new System.EventHandler(this.timerHora_Tick_1);
             // 
+            // btnFinalizar
+            // 
+            this.btnFinalizar.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnFinalizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFinalizar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnFinalizar.Location = new System.Drawing.Point(453, 286);
+            this.btnFinalizar.Name = "btnFinalizar";
+            this.btnFinalizar.Size = new System.Drawing.Size(154, 27);
+            this.btnFinalizar.TabIndex = 42;
+            this.btnFinalizar.Text = "Finalizar Prestamo";
+            this.btnFinalizar.UseVisualStyleBackColor = false;
+            this.btnFinalizar.Click += new System.EventHandler(this.btnFinalizar_Click);
+            // 
             // Computadora
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(914, 649);
-            this.Controls.Add(this.borrarPrestamo);
+            this.Controls.Add(this.btnBorrar);
             this.Controls.Add(this.filtrarMes);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
@@ -438,7 +441,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtComputadora;
         private System.Windows.Forms.MonthCalendar dtFecha;
-        private System.Windows.Forms.Button btnFinalizar;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cbEncargado;
@@ -456,7 +458,8 @@
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.TextBox TextCedula;
         private System.Windows.Forms.Button filtrarMes;
-        private System.Windows.Forms.Button borrarPrestamo;
+        private System.Windows.Forms.Button btnBorrar;
         private System.Windows.Forms.Timer timerHora;
+        private System.Windows.Forms.Button btnFinalizar;
     }
 }
