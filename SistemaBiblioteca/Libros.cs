@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
+using MySql.Data.MySqlClient;
 
 namespace SistemaBiblioteca
 {
@@ -25,6 +26,7 @@ namespace SistemaBiblioteca
             rbFechaActual.Checked = true;
             dtHora.Format = DateTimePickerFormat.Time;
             dtHora.ShowUpDown = true;
+            CargarPrestamos("");
         }
 
         private void inicializarFechaActual()
@@ -52,11 +54,11 @@ namespace SistemaBiblioteca
             String error = validarCampos();
             if (error.Equals(""))
             {
-
+                AgregarCliente();
                 if (textNombre.Text == "")
                 {
                     button2.Enabled = false;
-                    button4.Enabled = false;
+                  
                 }
             }
             else
@@ -115,7 +117,7 @@ namespace SistemaBiblioteca
                 if (textNombre.Text != "")
                 {
                     button2.Enabled = true;
-                    button4.Enabled = true;
+                    btnFinalizar.Enabled = true;
                 }
 
             }
@@ -183,7 +185,7 @@ namespace SistemaBiblioteca
                     textNombre.Text = "";
                     textApellido.Text = "";
                     button2.Enabled = false;
-                    button4.Enabled = false;
+                    btnFinalizar.Enabled = false;
                 }
             }
             catch (Exception ex)
@@ -216,6 +218,188 @@ namespace SistemaBiblioteca
             dtFecha.SetDate(DateTime.Today);
             dtHora.Enabled = false;
             dtHora.Text = DateTime.Now.ToString("HH:mm:ss tt");
+        }
+
+        private void AgregarCliente()
+        {
+            try
+            {
+                con.Abrir();
+                string error = validarCampos();
+                if (error == "")
+                {
+                    string fecha = dtFecha.SelectionEnd.ToString("d/MM/yyyy");
+                    con.CargarQuery("INSERT INTO `libro`(`libro`, `tipo`, `encargado`, `beneficiarios`, `automatizado`, `fechaPrestamo`,`cedula`)" +
+                        " VALUES ('" + textLibro.Text.Trim() + "', '" + CB_tipo.SelectedItem.ToString() + "', '" + CB_encargado.SelectedItem.ToString()+  "', '"+
+                         CB_beneficiarios.SelectedItem.ToString() + "', '" + CB_automizado.SelectedItem.ToString() + "', '"+ fecha + "', '"+TextCedula.Text.Trim()+"');");
+                    con.GetSalida().Close();
+                    MessageBox.Show("Prestamo Cubículo registrado");
+                    limpiarCampos();
+                    CargarPrestamos("");
+                }
+                else
+                {
+                    MessageBox.Show(error, "Error");
+                }
+
+            }
+            catch (MySqlException ex)
+            {
+                int errorNum = ex.Number;
+                if (errorNum == 1452) MessageBox.Show("Error: Revisar la cédula Ingresada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else MessageBox.Show("Error: " + ex.Number, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            finally
+            {
+                con.Cerrar();
+            }
+        }
+        private void limpiarCampos()
+        {
+            TextCedula.Text = "";
+            textNombre.Text = "";
+            textApellido.Text = "";
+            textLibro.Text = "";
+            CB_beneficiarios.SelectedIndex = -1;
+            CB_tipo.SelectedIndex = -1;
+            CB_encargado.SelectedIndex = -1;
+            CB_automizado.SelectedIndex = -1;
+        }
+        private DataTable InicializarTabla()
+        {
+            DataTable tablaSalida = new DataTable();
+            tablaSalida.Columns.Add(new DataColumn("id"));
+            tablaSalida.Columns.Add(new DataColumn("Cédula"));
+            tablaSalida.Columns.Add(new DataColumn("Nombre"));
+            tablaSalida.Columns.Add(new DataColumn("Apellido"));
+            tablaSalida.Columns.Add(new DataColumn("libro"));
+            tablaSalida.Columns.Add(new DataColumn("Fecha Inicio"));
+            tablaSalida.Columns.Add(new DataColumn("Fecha Fin"));
+            tablaSalida.Columns.Add(new DataColumn("Tipo"));
+            tablaSalida.Columns.Add(new DataColumn("Beneficiarios"));
+            tablaSalida.Columns.Add(new DataColumn("Automatizado"));
+            tablaSalida.Columns.Add(new DataColumn("Encargado"));
+            return tablaSalida;
+        }
+        private void CargarPrestamos(string fecha)
+        {
+            try
+            {
+
+                con.Abrir();
+                if (fecha == "")
+                {
+                    con.CargarQuery("SELECT libro.id,cliente.cedula,cliente.Nombre,cliente.Apellido,libro.libro,libro.fechaPrestamo" +
+                        ",libro.fechaDevolucion,libro.tipo,libro.beneficiarios,libro.automatizado, libro.encargado FROM libro,cliente WHERE " +
+                        "cliente.cedula=libro.cedula;");
+                }
+                else
+                {
+                    con.CargarQuery("SELECT libro.id,cliente.cedula,cliente.Nombre,cliente.Apellido,libro.libro,libro.fechaPrestamo" +
+                        ",libro.fechaDevolucion,libro.tipo,libro.beneficiarios,libro.automatizado, libro.encargado FROM libro,cliente WHERE " +
+                        "cliente.cedula=libro.cedula AND libro.fechaPrestamo like '%/" + fecha + "';");
+                }
+
+                DataTable tablaCliente = InicializarTabla();
+
+                IDataReader reader = con.GetSalida();
+                DataRow row;
+                while (reader.Read())
+                {
+                    row = tablaCliente.NewRow();
+                    row["id"] = reader["id"].ToString();
+                    row["Cédula"] = reader["cedula"].ToString();
+                    row["Nombre"] = reader["nombre"].ToString();
+                    row["Apellido"] = reader["apellido"].ToString();
+                    row["Libro"] = reader["libro"].ToString();
+                    row["Fecha Inicio"] = reader["fechaPrestamo"].ToString();
+                    row["Fecha Fin"] = reader["fechaDevolucion"].ToString();
+                    row["Tipo"] = reader["tipo"].ToString();
+                    row["Beneficiarios"] = reader["beneficiarios"].ToString();
+                    row["Automatizado"] = reader["automatizado"].ToString();
+                    row["Encargado"] = reader["encargado"].ToString();
+                    tablaCliente.Rows.Add(row);
+                }
+                dgLibros.Columns.Clear();
+                dgLibros.DataSource = tablaCliente;
+                dgLibros.Columns["id"].Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex, "Error");
+
+            }
+            finally
+            {
+                con.Cerrar();
+            }
+        }
+
+        private void btnFinalizar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int index = dgLibros.CurrentCell.RowIndex;
+                con.Abrir();
+                string fecha = dtFecha.SelectionEnd.ToString("d/MM/yyyy");
+                string id = dgLibros.Rows[index].Cells["id"].Value.ToString();
+                con.CargarQuery("UPDATE libro SET fechaDevolucion = '" + fecha + "' WHERE  libro.id = " + id + ";");
+                con.GetSalida().Close();
+                MessageBox.Show("Prestamo finalizado");
+                CargarPrestamos("");
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex, "Error");
+
+            }
+            finally
+            {
+                con.Cerrar();
+            }
+        }
+
+        private void btnBorrar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int index = dgLibros.CurrentCell.RowIndex;
+                string fechaFin = dgLibros.Rows[index].Cells["Fecha Fin"].Value.ToString();
+                if (fechaFin.Equals(""))
+                {
+                    MessageBox.Show("Primero debe finalizar el prestamo");
+
+
+                }
+                else
+                {
+                    con.Abrir();
+                    string id = dgLibros.Rows[index].Cells["id"].Value.ToString();
+                    con.CargarQuery("DELETE FROM `libro` WHERE id =" + id + "; ");
+                    con.GetSalida().Close();
+                    MessageBox.Show("Prestamo eliminado");
+                    CargarPrestamos("");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex, "Error");
+
+            }
+            finally
+            {
+                con.Cerrar();
+            }
+        }
+
+        private void filtrarMes_Click(object sender, EventArgs e)
+        {
+            string fecha = dtFecha.SelectionEnd.ToString("MM/yyyy");
+            CargarPrestamos(fecha);
         }
     }
 }

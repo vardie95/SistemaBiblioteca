@@ -118,7 +118,7 @@
             this.edad});
             this.dgClientes.Location = new System.Drawing.Point(29, 187);
             this.dgClientes.Name = "dgClientes";
-            this.dgClientes.Size = new System.Drawing.Size(524, 285);
+            this.dgClientes.Size = new System.Drawing.Size(541, 285);
             this.dgClientes.TabIndex = 7;
             this.dgClientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgClientes_CellContentClick);
             this.dgClientes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.LlnearCliente);
@@ -272,7 +272,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(567, 494);
+            this.ClientSize = new System.Drawing.Size(603, 494);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.txtApellido);
