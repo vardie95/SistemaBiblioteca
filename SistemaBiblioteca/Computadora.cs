@@ -258,13 +258,14 @@ namespace SistemaBiblioteca
                     row = tablaCliente.NewRow();
                     row["Fecha"] = reader["Fecha"].ToString();
                     row["Computadora"] = reader["computadora"].ToString();
+                    row["Cedula"] = reader["cedula"].ToString();
+                    row["Nombre"] = reader["Nombre"].ToString();
+                    row["Apellido"] = reader["Apellido"].ToString();
                     row["Hora inicio"] = reader["horaInicio"].ToString();
                     row["Hora fin"] = reader["horaFin"].ToString();
                     row["Beneficiarios"] = reader["beneficiarios"].ToString();
                     row["Encargado"] = reader["encargado"].ToString();
-                    row["Cedula"] = reader["cedula"].ToString();
-                    row["Nombre"] = reader["Nombre"].ToString();
-                    row["Apellido"] = reader["Apellido"].ToString();
+
                     tablaCliente.Rows.Add(row);
                 }
                 dgComputadora.Columns.Clear();
@@ -286,13 +287,14 @@ namespace SistemaBiblioteca
             DataTable tablaSalida = new DataTable();
             tablaSalida.Columns.Add(new DataColumn("Fecha"));
             tablaSalida.Columns.Add(new DataColumn("Computadora"));
+            tablaSalida.Columns.Add(new DataColumn("Cedula"));
+            tablaSalida.Columns.Add(new DataColumn("Nombre"));
+            tablaSalida.Columns.Add(new DataColumn("Apellido"));
             tablaSalida.Columns.Add(new DataColumn("Hora inicio"));
             tablaSalida.Columns.Add(new DataColumn("Hora fin"));
             tablaSalida.Columns.Add(new DataColumn("Beneficiarios"));
             tablaSalida.Columns.Add(new DataColumn("Encargado"));
-            tablaSalida.Columns.Add(new DataColumn("Cedula"));
-            tablaSalida.Columns.Add(new DataColumn("Nombre"));
-            tablaSalida.Columns.Add(new DataColumn("Apellido"));
+
             return tablaSalida;
         }
     }
