@@ -27,7 +27,7 @@ namespace SistemaBiblioteca
             con = new Conexion(@"Data Source = localhost;port=3306;Initial"
             + " Catalog=sistemabiblioteca;User Id=root;password = '' ");
 
-            CargarPrestamos();
+            CargarPrestamos("");
 
         }
 
@@ -78,7 +78,6 @@ namespace SistemaBiblioteca
                 if (textNombre.Text != "")
                 {
                     button2.Enabled = true;
-                    button4.Enabled = true;
                 }
 
             }
@@ -129,7 +128,6 @@ namespace SistemaBiblioteca
                 if (textNombre.Text == "")
                 {
                     button2.Enabled = false;
-                    button4.Enabled = false;
                 }
             }
             else
@@ -155,8 +153,9 @@ namespace SistemaBiblioteca
         private void rbFechaActual_CheckedChanged_1(object sender, EventArgs e)
         {
             dtFecha.Enabled = false;
+            dtFecha.SetDate(DateTime.Today);
             dtHora.Enabled = false;
-            dtFecha.SetDate(fechaHoy);
+            dtHora.Text = DateTime.Now.ToString("HH:mm:ss tt");
         }
         private void BuscarCliente()
         {
@@ -180,7 +179,6 @@ namespace SistemaBiblioteca
                     textNombre.Text = "";
                     textApellido.Text = "";
                     button2.Enabled = false;
-                    button4.Enabled = false;
                 }
             }
             catch (Exception ex)
@@ -203,12 +201,14 @@ namespace SistemaBiblioteca
                 string error = validarCampos();
                 if (error == "")
                 {
+                    string fecha = dtFecha.SelectionEnd.ToString("d/MM/yyyy");
                     con.CargarQuery("INSERT INTO `cubiculo`(`cubiculo`, `fecha`, `horaInicio`, `finalidad`, `beneficiarios`, `encargado`, `cedula`) " +
-                        " VALUES ('" + CB_cubiculo.SelectedItem.ToString() + "', '" + fechaHoy.ToString() + "', '" + dtHora.Text + "', '" + textFinalidad.Text.Trim() +
+                        " VALUES ('" + CB_cubiculo.SelectedItem.ToString() + "', '" + fecha + "', '" + dtHora.Text + "', '" + textFinalidad.Text.Trim() +
                         "', '" + CB_beneficiarios.SelectedItem.ToString() + "', '" + CB_encargado.SelectedItem.ToString() + "', '" + TextCedula.Text.Trim() + "');");
                     con.GetSalida().Close();
                     MessageBox.Show("Prestamo Cubículo registrado");
                     limpiarCampos();
+                    CargarPrestamos("");
                 }
                 else
                 {
@@ -241,10 +241,13 @@ namespace SistemaBiblioteca
         private DataTable InicializarTabla()
         {
             DataTable tablaSalida = new DataTable();
+            tablaSalida.Columns.Add(new DataColumn("id"));
             tablaSalida.Columns.Add(new DataColumn("Cédula"));
             tablaSalida.Columns.Add(new DataColumn("Nombre"));
             tablaSalida.Columns.Add(new DataColumn("Apellido"));
+            tablaSalida.Columns.Add(new DataColumn("Fecha"));
             tablaSalida.Columns.Add(new DataColumn("Hora Inicio"));
+            tablaSalida.Columns.Add(new DataColumn("Hora Fin"));
             tablaSalida.Columns.Add(new DataColumn("Beneficiarios"));
             tablaSalida.Columns.Add(new DataColumn("Cubículo"));
             tablaSalida.Columns.Add(new DataColumn("Finalidad"));
@@ -252,14 +255,25 @@ namespace SistemaBiblioteca
             return tablaSalida;
         }
 
-        private void CargarPrestamos()
+        private void CargarPrestamos(string fecha)
         {
             try
             {
                
                 con.Abrir();
-                con.CargarQuery("SELECT cliente.cedula,cliente.Nombre,cliente.Apellido,cubiculo.horaInicio,cubiculo.beneficiarios,"+
-                    "cubiculo.cubiculo,cubiculo.finalidad, cubiculo.encargado FROM cubiculo,cliente WHERE cliente.cedula=cubiculo.cedula;");
+                if (fecha == "")
+                {
+                    con.CargarQuery("SELECT cubiculo.id,cubiculo.fecha, cliente.cedula,cliente.Nombre,cliente.Apellido,cubiculo.horaInicio,cubiculo.horaFin" +
+                        ",cubiculo.beneficiarios,cubiculo.cubiculo,cubiculo.finalidad, cubiculo.encargado FROM cubiculo,cliente WHERE " +
+                        "cliente.cedula=cubiculo.cedula;");
+                }
+                else
+                {
+                    con.CargarQuery("SELECT cubiculo.id,cubiculo.fecha, cliente.cedula,cliente.Nombre,cliente.Apellido,cubiculo.horaInicio,cubiculo.horaFin" +
+                        ",cubiculo.beneficiarios,cubiculo.cubiculo,cubiculo.finalidad, cubiculo.encargado FROM cubiculo,cliente WHERE " +
+                        "cliente.cedula=cubiculo.cedula AND cubiculo.fecha like '%/" + fecha + "';");
+                }
+
                 DataTable tablaCliente = InicializarTabla();
 
                 IDataReader reader = con.GetSalida();
@@ -267,10 +281,13 @@ namespace SistemaBiblioteca
                 while (reader.Read())
                 {
                     row = tablaCliente.NewRow();
+                    row["id"] = reader["id"].ToString();
                     row["Cédula"] = reader["cedula"].ToString();
                     row["Nombre"] = reader["nombre"].ToString();
                     row["Apellido"] = reader["apellido"].ToString();
+                    row["Fecha"] = reader["fecha"].ToString();
                     row["Hora Inicio"] = reader["horaInicio"].ToString();
+                    row["Hora Fin"] = reader["horaFin"].ToString();
                     row["Beneficiarios"] = reader["beneficiarios"].ToString();
                     row["Cubículo"] = reader["cubiculo"].ToString();
                     row["Finalidad"] = reader["finalidad"].ToString();
@@ -279,6 +296,7 @@ namespace SistemaBiblioteca
                 }
                 dgCubiculos.Columns.Clear();
                 dgCubiculos.DataSource = tablaCliente;
+                dgCubiculos.Columns["id"].Visible = false;
             }
             catch (Exception ex)
             {
@@ -294,6 +312,70 @@ namespace SistemaBiblioteca
         private void button4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void timerHora_Tick(object sender, EventArgs e)
+        {
+            if (rbFechaActual.Checked == true)
+            {
+                dtHora.Text = DateTime.Now.ToString("HH:mm:ss tt");
+            }
+        }
+
+        private void btnFinalizar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int index = dgCubiculos.CurrentCell.RowIndex;
+                con.Abrir();
+                string id = dgCubiculos.Rows[index].Cells["id"].Value.ToString();
+                con.CargarQuery("UPDATE cubiculo SET horaFin= '" + dtHora.Text + "' WHERE cubiculo.id = " + id + ";");
+                con.GetSalida().Close();
+                MessageBox.Show("Prestamo finalizado");
+                CargarPrestamos("");
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex, "Error");
+
+            }
+            finally
+            {
+                con.Cerrar();
+            }
+        }
+
+        private void btnBorrar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int index = dgCubiculos.CurrentCell.RowIndex;
+                con.Abrir();
+                string id = dgCubiculos.Rows[index].Cells["id"].Value.ToString();
+                con.CargarQuery("DELETE FROM `cubiculo` WHERE id =" + id + "; ");
+                con.GetSalida().Close();
+                MessageBox.Show("Prestamo eliminado");
+                CargarPrestamos("");
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex, "Error");
+
+            }
+            finally
+            {
+                con.Cerrar();
+            }
+        }
+
+        private void filtrarMes_Click(object sender, EventArgs e)
+        {
+            string fecha = dtFecha.SelectionEnd.ToString("MM/yyyy");
+            CargarPrestamos(fecha);
         }
     }  
 

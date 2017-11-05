@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Cubículos));
             this.label1 = new System.Windows.Forms.Label();
             this.dgCubiculos = new System.Windows.Forms.DataGridView();
@@ -42,7 +43,6 @@
             this.button5 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.CB_encargado = new System.Windows.Forms.ComboBox();
@@ -62,6 +62,11 @@
             this.lblHoy = new System.Windows.Forms.Label();
             this.dtHora = new System.Windows.Forms.DateTimePicker();
             this.rbFechaActual = new System.Windows.Forms.RadioButton();
+            this.btnBorrar = new System.Windows.Forms.Button();
+            this.filtrarMes = new System.Windows.Forms.Button();
+            this.btnFinalizar = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.timerHora = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgCubiculos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -89,10 +94,10 @@
             this.Cubículo,
             this.Finalidad,
             this.Encargado});
-            this.dgCubiculos.Location = new System.Drawing.Point(45, 299);
+            this.dgCubiculos.Location = new System.Drawing.Point(45, 312);
             this.dgCubiculos.Name = "dgCubiculos";
             this.dgCubiculos.ReadOnly = true;
-            this.dgCubiculos.Size = new System.Drawing.Size(846, 337);
+            this.dgCubiculos.Size = new System.Drawing.Size(789, 324);
             this.dgCubiculos.TabIndex = 4;
             // 
             // Cédula
@@ -172,20 +177,6 @@
             this.label5.Size = new System.Drawing.Size(52, 13);
             this.label5.TabIndex = 45;
             this.label5.Text = "Finalidad:";
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.Firebrick;
-            this.button4.Enabled = false;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button4.Location = new System.Drawing.Point(204, 230);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(110, 45);
-            this.button4.TabIndex = 42;
-            this.button4.Text = "Finalizar Prestamo";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button2
             // 
@@ -307,7 +298,7 @@
             // dtFecha
             // 
             this.dtFecha.Enabled = false;
-            this.dtFecha.Location = new System.Drawing.Point(576, 57);
+            this.dtFecha.Location = new System.Drawing.Point(622, 57);
             this.dtFecha.Name = "dtFecha";
             this.dtFecha.TabIndex = 54;
             // 
@@ -351,7 +342,7 @@
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(712, 256);
+            this.radioButton1.Location = new System.Drawing.Point(715, 256);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(124, 17);
             this.radioButton1.TabIndex = 58;
@@ -371,7 +362,7 @@
             // 
             // dtHora
             // 
-            this.dtHora.Location = new System.Drawing.Point(637, 230);
+            this.dtHora.Location = new System.Drawing.Point(683, 230);
             this.dtHora.Name = "dtHora";
             this.dtHora.Size = new System.Drawing.Size(151, 20);
             this.dtHora.TabIndex = 65;
@@ -379,7 +370,7 @@
             // rbFechaActual
             // 
             this.rbFechaActual.AutoSize = true;
-            this.rbFechaActual.Location = new System.Drawing.Point(576, 258);
+            this.rbFechaActual.Location = new System.Drawing.Point(622, 256);
             this.rbFechaActual.Name = "rbFechaActual";
             this.rbFechaActual.Size = new System.Drawing.Size(87, 17);
             this.rbFechaActual.TabIndex = 66;
@@ -388,12 +379,70 @@
             this.rbFechaActual.UseVisualStyleBackColor = true;
             this.rbFechaActual.CheckedChanged += new System.EventHandler(this.rbFechaActual_CheckedChanged_1);
             // 
+            // btnBorrar
+            // 
+            this.btnBorrar.BackColor = System.Drawing.Color.Brown;
+            this.btnBorrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBorrar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnBorrar.Location = new System.Drawing.Point(620, 279);
+            this.btnBorrar.Name = "btnBorrar";
+            this.btnBorrar.Size = new System.Drawing.Size(110, 27);
+            this.btnBorrar.TabIndex = 77;
+            this.btnBorrar.Text = "Borrar prestamo";
+            this.btnBorrar.UseVisualStyleBackColor = false;
+            this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
+            // 
+            // filtrarMes
+            // 
+            this.filtrarMes.BackColor = System.Drawing.Color.SteelBlue;
+            this.filtrarMes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.filtrarMes.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.filtrarMes.Location = new System.Drawing.Point(736, 279);
+            this.filtrarMes.Name = "filtrarMes";
+            this.filtrarMes.Size = new System.Drawing.Size(100, 27);
+            this.filtrarMes.TabIndex = 76;
+            this.filtrarMes.Text = "Filtrar por mes";
+            this.filtrarMes.UseVisualStyleBackColor = false;
+            this.filtrarMes.Click += new System.EventHandler(this.filtrarMes_Click);
+            // 
+            // btnFinalizar
+            // 
+            this.btnFinalizar.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnFinalizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFinalizar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnFinalizar.Location = new System.Drawing.Point(460, 279);
+            this.btnFinalizar.Name = "btnFinalizar";
+            this.btnFinalizar.Size = new System.Drawing.Size(154, 27);
+            this.btnFinalizar.TabIndex = 75;
+            this.btnFinalizar.Text = "Finalizar Prestamo";
+            this.btnFinalizar.UseVisualStyleBackColor = false;
+            this.btnFinalizar.Click += new System.EventHandler(this.btnFinalizar_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(644, 236);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(33, 13);
+            this.label7.TabIndex = 78;
+            this.label7.Text = "Hora:";
+            // 
+            // timerHora
+            // 
+            this.timerHora.Enabled = true;
+            this.timerHora.Interval = 1000;
+            this.timerHora.Tick += new System.EventHandler(this.timerHora_Tick);
+            // 
             // Cubículos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(914, 649);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.btnBorrar);
+            this.Controls.Add(this.filtrarMes);
+            this.Controls.Add(this.btnFinalizar);
             this.Controls.Add(this.rbFechaActual);
             this.Controls.Add(this.dtHora);
             this.Controls.Add(this.lblHoy);
@@ -404,7 +453,6 @@
             this.Controls.Add(this.textFinalidad);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.button4);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.CB_encargado);
@@ -445,7 +493,6 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox CB_encargado;
@@ -470,5 +517,10 @@
         private System.Windows.Forms.Label lblHoy;
         private System.Windows.Forms.DateTimePicker dtHora;
         private System.Windows.Forms.RadioButton rbFechaActual;
+        private System.Windows.Forms.Button btnBorrar;
+        private System.Windows.Forms.Button filtrarMes;
+        private System.Windows.Forms.Button btnFinalizar;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Timer timerHora;
     }
 }
