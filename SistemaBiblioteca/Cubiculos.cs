@@ -23,9 +23,11 @@ namespace SistemaBiblioteca
             rbFechaActual.Checked = true;
             dtHora.Format = DateTimePickerFormat.Time;
             dtHora.ShowUpDown = true;
-            CargarPrestamos();
+            
             con = new Conexion(@"Data Source = localhost;port=3306;Initial"
             + " Catalog=sistemabiblioteca;User Id=root;password = '' ");
+
+            CargarPrestamos();
 
         }
 
@@ -249,6 +251,7 @@ namespace SistemaBiblioteca
             tablaSalida.Columns.Add(new DataColumn("Encargado"));
             return tablaSalida;
         }
+
         private void CargarPrestamos()
         {
             try
@@ -264,14 +267,14 @@ namespace SistemaBiblioteca
                 while (reader.Read())
                 {
                     row = tablaCliente.NewRow();
-                    row["Cédula"] = reader["cliente.cedula"].ToString();
-                    row["Nombre"] = reader["cliente.nombre"].ToString();
-                    row["Apellido"] = reader["cliente.apellido"].ToString();
-                    row["Hora Inicio"] = reader["cubiculo.horaInicio"].ToString();
-                    row["Beneficiarios"] = reader["cubiculo.beneficiarios"].ToString();
-                    row["Cubículo"] = reader["cubiculo.cubiculo"].ToString();
-                    row["Finalidad"] = reader["cubiculo.finalidad"].ToString();
-                    row["Encargado"] = reader["cubiculo.encargado"].ToString();
+                    row["Cédula"] = reader["cedula"].ToString();
+                    row["Nombre"] = reader["nombre"].ToString();
+                    row["Apellido"] = reader["apellido"].ToString();
+                    row["Hora Inicio"] = reader["horaInicio"].ToString();
+                    row["Beneficiarios"] = reader["beneficiarios"].ToString();
+                    row["Cubículo"] = reader["cubiculo"].ToString();
+                    row["Finalidad"] = reader["finalidad"].ToString();
+                    row["Encargado"] = reader["encargado"].ToString();
                     tablaCliente.Rows.Add(row);
                 }
                 dgCubiculos.Columns.Clear();
@@ -288,7 +291,10 @@ namespace SistemaBiblioteca
             }
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
 
+        }
     }  
 
 
