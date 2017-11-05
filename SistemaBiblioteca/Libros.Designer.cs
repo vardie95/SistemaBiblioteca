@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Libros));
             this.label1 = new System.Windows.Forms.Label();
             this.TextCedula = new System.Windows.Forms.TextBox();
@@ -70,6 +71,7 @@
             this.btnBorrar = new System.Windows.Forms.Button();
             this.filtrarMes = new System.Windows.Forms.Button();
             this.btnFinalizar = new System.Windows.Forms.Button();
+            this.timerHora = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgLibros)).BeginInit();
             this.SuspendLayout();
             // 
@@ -464,6 +466,12 @@
             this.btnFinalizar.UseVisualStyleBackColor = false;
             this.btnFinalizar.Click += new System.EventHandler(this.btnFinalizar_Click);
             // 
+            // timerHora
+            // 
+            this.timerHora.Enabled = true;
+            this.timerHora.Interval = 1000;
+            this.timerHora.Tick += new System.EventHandler(this.timerHora_Tick);
+            // 
             // Libros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -555,5 +563,6 @@
         private System.Windows.Forms.Button btnBorrar;
         private System.Windows.Forms.Button filtrarMes;
         private System.Windows.Forms.Button btnFinalizar;
+        private System.Windows.Forms.Timer timerHora;
     }
 }

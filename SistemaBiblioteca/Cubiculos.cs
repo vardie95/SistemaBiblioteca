@@ -374,8 +374,17 @@ namespace SistemaBiblioteca
 
         private void filtrarMes_Click(object sender, EventArgs e)
         {
-            string fecha = dtFecha.SelectionEnd.ToString("MM/yyyy");
-            CargarPrestamos(fecha);
+            if (filtrarMes.Text == "Cancelar")
+            {
+                CargarPrestamos("");
+                filtrarMes.Text = "Filtrar por mes";
+            }
+            else
+            {
+                string fecha = dtFecha.SelectionEnd.ToString("MM/yyyy");
+                CargarPrestamos(fecha);
+                filtrarMes.Text = "Cancelar";
+            }
         }
     }  
 

@@ -228,7 +228,8 @@ namespace SistemaBiblioteca
                 string error = validarCampos();
                 if (error == "")
                 {
-                    string fecha = dtFecha.SelectionEnd.ToString("d/MM/yyyy");
+
+                    string fecha = dtHora.Text +" "+ dtFecha.SelectionEnd.ToString("d/MM/yyyy");
                     con.CargarQuery("INSERT INTO `libro`(`libro`, `tipo`, `encargado`, `beneficiarios`, `automatizado`, `fechaPrestamo`,`cedula`)" +
                         " VALUES ('" + textLibro.Text.Trim() + "', '" + CB_tipo.SelectedItem.ToString() + "', '" + CB_encargado.SelectedItem.ToString()+  "', '"+
                          CB_beneficiarios.SelectedItem.ToString() + "', '" + CB_automizado.SelectedItem.ToString() + "', '"+ fecha + "', '"+TextCedula.Text.Trim()+"');");
@@ -345,7 +346,7 @@ namespace SistemaBiblioteca
             {
                 int index = dgLibros.CurrentCell.RowIndex;
                 con.Abrir();
-                string fecha = dtFecha.SelectionEnd.ToString("d/MM/yyyy");
+                string fecha = dtHora.Text + " " + dtFecha.SelectionEnd.ToString("d/MM/yyyy");
                 string id = dgLibros.Rows[index].Cells["id"].Value.ToString();
                 con.CargarQuery("UPDATE libro SET fechaDevolucion = '" + fecha + "' WHERE  libro.id = " + id + ";");
                 con.GetSalida().Close();
@@ -401,8 +402,25 @@ namespace SistemaBiblioteca
 
         private void filtrarMes_Click(object sender, EventArgs e)
         {
-            string fecha = dtFecha.SelectionEnd.ToString("MM/yyyy");
-            CargarPrestamos(fecha);
+            if(filtrarMes.Text == "Cancelar")
+            {
+                CargarPrestamos("");
+                filtrarMes.Text = "Filtrar por mes";
+            }
+            else
+            {
+                string fecha = dtFecha.SelectionEnd.ToString("MM/yyyy");
+                CargarPrestamos(fecha);
+                filtrarMes.Text = "Cancelar";
+            }
+        }
+
+        private void timerHora_Tick(object sender, EventArgs e)
+        {
+            if (rbFechaActual.Checked == true)
+            {
+                dtHora.Text = DateTime.Now.ToString("HH:mm:ss tt");
+            }
         }
     }
 }
