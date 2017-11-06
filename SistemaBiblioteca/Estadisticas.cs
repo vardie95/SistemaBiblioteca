@@ -22,21 +22,14 @@ namespace SistemaBiblioteca
             InitializeComponent();
             SetMyCustomFormat();
 
+            dgEstadistica.Columns[2].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgEstadistica.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+
         }
 
         private void cbTipoPrestamo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbTipoPrestamo.SelectedIndex == 2) {
-                cbEstadistica.Items.Add("A sala");
-                cbEstadistica.Items.Add("A domicilo");
-            }
-            else
-            {
-                cbEstadistica.Items.Clear();
-                cbEstadistica.Items.Add("Cantidad");
-                cbEstadistica.Items.Add("Género");
-                cbEstadistica.Items.Add("Grupo de edad"); 
-            }
+
         }
 
         public void SetMyCustomFormat()
@@ -83,6 +76,11 @@ namespace SistemaBiblioteca
             {
                 calcularCantidadSexo("Computdora", "computadoras", "fecha");
             }
+            if (estadistica == "Grupo de edad" || estadistica == "")
+            {
+                calcularGrupoEdad("Computdora", "computadoras", "fecha");
+            }
+
         }
 
         private void calcularCubiculo(string estadistica)
@@ -94,6 +92,10 @@ namespace SistemaBiblioteca
             if (estadistica == "Género" || estadistica == "")
             {
                 calcularCantidadSexo("Cubículo", "cubiculo", "fecha");
+            }
+            if (estadistica == "Grupo de edad" || estadistica == "")
+            {
+                calcularGrupoEdad("Cubículo", "cubiculo", "fecha");
             }
         }
 
@@ -107,6 +109,10 @@ namespace SistemaBiblioteca
             if (estadistica == "Género" || estadistica == "")
             {
                 calcularCantidadSexo("Libro", "libro", "fechaPrestamo");
+            }
+            if (estadistica == "Grupo de edad" || estadistica == "")
+            {
+                calcularGrupoEdad("Libro", "libro", "fechaPrestamo");
             }
         }
        
@@ -173,6 +179,54 @@ namespace SistemaBiblioteca
                 con.Cerrar();
             }
         }
+
+        private void calcularGrupoEdad(string nombre, string tabla, string fecha)
+        {
+            try
+            {
+                con.Abrir();
+                string fechaBusqueda = tabla + "." + fecha;
+
+                con.CargarQuery("SELECT "+
+                    "SUM(IF(persona.age < 20, 1, 0)) as 'Menor a 20',"+
+                    "SUM(IF(persona.age BETWEEN 20 and 29, 1, 0)) as '20 - 29',"+
+                    "SUM(IF(persona.age BETWEEN 30 and 39, 1, 0)) as '30 - 39',"+
+                    "SUM(IF(persona.age BETWEEN 40 and 49, 1, 0)) as '40 - 49',"+
+                    "SUM(IF(persona.age BETWEEN 50 and 59, 1, 0)) as '50 - 59',"+
+                    "SUM(IF(persona.age > 60, 1, 0)) as 'mayor a 60'"+
+
+                    "FROM(SELECT EXTRACT(YEAR FROM(FROM_DAYS(DATEDIFF(NOW(), STR_TO_DATE(cliente.fechaNacimiento,'%d/%m/%Y')))))" +
+                    " + 0 age, cedula from cliente) AS persona, "+tabla+" WHERE "+tabla+".cedula = persona.cedula AND "+
+                    ""+ fechaBusqueda + " like '%/" + fechaEstadistica.Text + "'; ");
+                IDataReader reader = con.GetSalida();
+                string resultado = "";
+                string nl = Environment.NewLine;
+                while (reader.Read())
+                {
+                    resultado+="Menor a 20: " + reader[0].ToString() + nl;
+                    resultado += "20-29: " + reader[1].ToString() + nl;
+                    resultado += "30-39: " + reader[2].ToString() + nl;
+                    resultado += "40-49: " + reader[3].ToString() + nl;
+                    resultado += "50-59: " + reader[4].ToString() + nl;
+                    resultado += "Mayor a 60: " + reader[5].ToString();
+                }
+                DataGridViewRow row = (DataGridViewRow)dgEstadistica.Rows[0].Clone();
+                row.Cells[0].Value = "" + nombre + "/Edad";
+                row.Cells[1].Value = fechaEstadistica.Text;
+                row.Cells[2].Value = resultado;
+                dgEstadistica.Rows.Add(row);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex, "Error");
+
+            }
+            finally
+            {
+                con.Cerrar();
+            }
+        }
+
 
 
         private void btnCalcTodas_Click(object sender, EventArgs e)

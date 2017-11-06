@@ -294,6 +294,7 @@
             this.Name = "registrarCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registrar Cliente";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.registrarCliente_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dgClientes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

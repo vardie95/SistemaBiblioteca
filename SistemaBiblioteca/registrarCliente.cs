@@ -310,5 +310,10 @@ namespace SistemaBiblioteca
         {
 
         }
+
+        private void registrarCliente_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

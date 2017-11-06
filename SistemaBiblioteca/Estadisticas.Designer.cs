@@ -58,7 +58,6 @@
             this.cbTipoPrestamo.Name = "cbTipoPrestamo";
             this.cbTipoPrestamo.Size = new System.Drawing.Size(138, 21);
             this.cbTipoPrestamo.TabIndex = 34;
-            this.cbTipoPrestamo.SelectedIndexChanged += new System.EventHandler(this.cbTipoPrestamo_SelectedIndexChanged);
             // 
             // label1
             // 
