@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Computadora));
             this.label1 = new System.Windows.Forms.Label();
             this.dgComputadora = new System.Windows.Forms.DataGridView();
             this.Cédula = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -415,10 +416,11 @@
             this.Controls.Add(this.button5);
             this.Controls.Add(this.dgComputadora);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Location = new System.Drawing.Point(4000, 0);
             this.Name = "Computadora";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cubiculos";
+            this.Text = "Computadoras";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Computadora_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dgComputadora)).EndInit();
             this.ResumeLayout(false);
