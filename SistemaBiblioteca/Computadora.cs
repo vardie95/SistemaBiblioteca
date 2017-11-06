@@ -17,9 +17,10 @@ namespace SistemaBiblioteca
     {
         DateTime fechaHoy = DateTime.Today;
         Conexion con;
-
-        public Computadora()
+        Form1 inicio;
+        public Computadora(Form1 inicio)
         {
+            this.inicio = inicio;
             con = new Conexion(@"Data Source = localhost;port=3306;Initial"
             + " Catalog=sistemabiblioteca;User Id=root;password = '' ");
 
@@ -56,8 +57,7 @@ namespace SistemaBiblioteca
 
         private void button5_Click(object sender, EventArgs e)
         {
-            this.Dispose();
-            new Form1().Show();
+            this.Close();
         }
 
         private void rbFechaActual_CheckedChanged(object sender, EventArgs e)
@@ -368,6 +368,11 @@ namespace SistemaBiblioteca
                 CargarPrestamos(fecha);
                 filtrarMes.Text = "Cancelar";
             }
+        }
+
+        private void Computadora_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            inicio.Show();
         }
     }
 }

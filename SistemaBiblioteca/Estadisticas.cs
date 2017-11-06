@@ -14,8 +14,10 @@ namespace SistemaBiblioteca
     {
 
         Conexion con;
-        public Estadisticas()
+        Form1 inicio;
+        public Estadisticas(Form1 inicio)
         {
+            this.inicio = inicio;
             con = new Conexion(@"Data Source = localhost;port=3306;Initial"
             + " Catalog=sistemabiblioteca;User Id=root;password = '' ");
 
@@ -42,7 +44,6 @@ namespace SistemaBiblioteca
         private void button5_Click(object sender, EventArgs e)
         {
             this.Close();
-            new Form1().Show();
         }
 
         private void fechaEstadistica_ValueChanged(object sender, EventArgs e)
@@ -250,5 +251,9 @@ namespace SistemaBiblioteca
             dgEstadistica.Rows.Clear();
         }
 
+        private void Estadisticas_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            inicio.Show();
+        }
     }
 }

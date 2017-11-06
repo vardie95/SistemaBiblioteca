@@ -196,6 +196,7 @@
             this.Name = "Estadisticas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Estadísticas";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Estadisticas_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dgEstadistica)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

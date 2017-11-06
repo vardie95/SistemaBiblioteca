@@ -513,6 +513,7 @@
             this.Name = "Libros";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Libros";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Libros_FormClosing);
             this.Load += new System.EventHandler(this.Libros_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgLibros)).EndInit();
             this.ResumeLayout(false);

@@ -419,6 +419,7 @@
             this.Name = "Computadora";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cubiculos";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Computadora_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dgComputadora)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

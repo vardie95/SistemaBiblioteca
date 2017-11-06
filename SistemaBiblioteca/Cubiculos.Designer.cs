@@ -472,6 +472,7 @@
             this.Name = "Cubículos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cubiculos";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Cubículos_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dgCubiculos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

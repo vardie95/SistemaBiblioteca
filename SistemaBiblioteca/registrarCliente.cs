@@ -16,8 +16,10 @@ namespace SistemaBiblioteca
     public partial class registrarCliente : Form
     {
         Conexion con;
-        public registrarCliente()
+        Form1 inicio;
+        public registrarCliente(Form1 inicio)
         {
+            this.inicio = inicio;
             con = new Conexion(@"Data Source = localhost;port=3306;Initial"
             + " Catalog=sistemabiblioteca;User Id=root;password = '' ");
             InitializeComponent();
@@ -57,7 +59,6 @@ namespace SistemaBiblioteca
         private void clicVolver(object sender, EventArgs e)
         {
             this.Close();
-            new Form1().Show();
         }
 
         private string verificarCampos()
@@ -313,7 +314,7 @@ namespace SistemaBiblioteca
 
         private void registrarCliente_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            inicio.Show();
         }
     }
 }

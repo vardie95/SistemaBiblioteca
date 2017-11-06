@@ -16,9 +16,10 @@ namespace SistemaBiblioteca
     {
         Conexion con;
         DateTime fechaHoy = DateTime.Today;
-        public Libros()
+        Form1 inicio;
+        public Libros(Form1 inicio)
         {
-            
+            this.inicio = inicio;
             InitializeComponent();
             inicializarFechaActual();
             con = new Conexion(@"Data Source = localhost;port=3306;Initial"
@@ -71,7 +72,6 @@ namespace SistemaBiblioteca
         private void button5_Click(object sender, EventArgs e)
         {
             this.Close();
-            new Form1().Show();
         }
 
         private void label6_Click(object sender, EventArgs e)
@@ -421,6 +421,11 @@ namespace SistemaBiblioteca
             {
                 dtHora.Text = DateTime.Now.ToString("HH:mm:ss tt");
             }
+        }
+
+        private void Libros_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            inicio.Show();
         }
     }
 }

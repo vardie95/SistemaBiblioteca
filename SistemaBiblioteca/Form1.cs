@@ -30,7 +30,7 @@ namespace SistemaBiblioteca
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Cubículos obje = new Cubículos();
+            Cubículos obje = new Cubículos(this);
             obje.Show();
             
         }
@@ -38,27 +38,27 @@ namespace SistemaBiblioteca
         private void button3_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Libros obje = new Libros();
+            Libros obje = new Libros(this);
             obje.Show();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             this.Hide();
-            registrarCliente obje = new registrarCliente();
+            registrarCliente obje = new registrarCliente(this);
             obje.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            new Computadora().Show();
+            new Computadora(this).Show();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             this.Hide();
-            new Estadisticas().Show();
+            new Estadisticas(this).Show();
         }
     }
 }

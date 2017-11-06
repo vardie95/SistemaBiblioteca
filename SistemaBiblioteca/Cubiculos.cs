@@ -16,8 +16,10 @@ namespace SistemaBiblioteca
     {
         DateTime fechaHoy = DateTime.Today;
         Conexion con;
-        public Cubículos()
+        Form1 inicio;
+        public Cubículos(Form1 inicio)
         {
+            this.inicio = inicio;
             InitializeComponent();
             inicializarFechaActual();
             rbFechaActual.Checked = true;
@@ -62,7 +64,7 @@ namespace SistemaBiblioteca
         private void button5_Click(object sender, EventArgs e)
         {
             this.Close();
-            new Form1().Show();
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -385,6 +387,11 @@ namespace SistemaBiblioteca
                 CargarPrestamos(fecha);
                 filtrarMes.Text = "Cancelar";
             }
+        }
+
+        private void Cubículos_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            inicio.Show();
         }
     }  
 
